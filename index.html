@@ -876,7 +876,7 @@ $("price").firstChild.textContent = CONFIG.price + " ";
 const demo = $("demoLink");
 if (CONFIG.demoUrl) demo.href = CONFIG.demoUrl;
 else { demo.hidden = true; $("demoPending").hidden = false; }
-if (/^(https:\/\/|[a-z])/.test(CONFIG.tourUrl)) { $("tourLink").href = CONFIG.tourUrl; $("tourTile").href = CONFIG.tourUrl; }
+if (/^(https:\/\/|\/|[a-z])/.test(CONFIG.tourUrl)) { $("tourLink").href = CONFIG.tourUrl; $("tourTile").href = CONFIG.tourUrl; }
 else { $("tourLink").hidden = true; $("tourTile").removeAttribute("target"); }
 
 // Team
