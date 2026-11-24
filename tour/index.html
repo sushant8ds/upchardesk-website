@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hospital Software Tour</title>
+<meta name="description" content="Watch the hospital software at work: reception, billing, beds, discharge and the owner's reports, in short real screen videos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap">
+<meta property="og:title" content="Hospital Software Tour">
+<meta property="og:description" content="Hospital and clinic software for OPD, billing, beds, discharge and reports. Made in Uttar Pradesh. Watch the video tour and try the live demo.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#222c7d">
+<style>html,body{margin:0}</style>
+</head>
+<body>
+<style>
+  /* Layout: same brand as the company website. A navy stage holds a chaptered video player (the product
+     at work), then a patient-journey strip that jumps into the player, proof figures, and "try it yourself". */
+  :root {
+    --bg: #ffffff;
+    --tint: #f0f5fb;
+    --ink: #2b2f3a;
+    --muted: #686d7a;
+    --line: #e2e6ee;
+    --navy: #222c7d;
+    --navy-2: #1a2266;
+    --navy-3: #141b52;
+    --sky: #14b2e6;
+    --sky-soft: #e3f6fd;
+    --on-navy: #ffffff;
+    --on-navy-muted: #c3c8ec;
+    --on-navy-line: rgba(255,255,255,.14);
+    --green: #1aa260;
+    --amber: #e8930c;
+    --shadow: 0 2px 6px rgba(34,44,125,.08), 0 8px 24px rgba(34,44,125,.08);
+    --font: "Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; }
+  h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+  p { margin: 0; }
+  a { color: var(--sky); text-decoration: none; }
+  img, video { max-width: 100%; display: block; }
+  button { font-family: var(--font); }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  section { scroll-margin-top: 76px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 6px; padding: 11px 20px; font-weight: 700; font-size: 15px; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+  .btn-sky { background: var(--sky); color: #fff; }
+  .btn-sky:hover { background: #0ea2d3; }
+  .btn-line { background: transparent; color: var(--sky); border-color: var(--sky); }
+  .btn-ghost { background: transparent; color: var(--on-navy); border-color: rgba(255,255,255,.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,.08); }
+  .icon { width: 20px; height: 20px; flex: none; }
+
+  /* Header (same as the website) */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 9px; color: var(--navy); font-weight: 800; font-size: 21px; letter-spacing: -.01em; }
+  .logo b { color: var(--sky); font-weight: 800; }
+  .logo-mark { width: 30px; height: 30px; border-radius: 50%; background: var(--sky); display: grid; place-items: center; color: #fff; }
+  .logo-mark .icon { width: 18px; height: 18px; }
+  .crumb { color: var(--muted); font-weight: 600; font-size: 14px; padding-left: 16px; border-left: 1px solid var(--line); }
+  .top-right { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+  .top .btn { padding: 8px 14px; font-size: 14px; }
+  @media (max-width: 720px) { .crumb, .top .btn-line { display: none; } }
+  @media (max-width: 420px) { .top .btn-sky { padding-inline: 10px; } }
+
+  /* Stage */
+  .stage { background: radial-gradient(1200px 500px at 85% -10%, rgba(20,178,230,.22), transparent 60%), linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--on-navy); overflow: hidden; }
+  .stage .wrap { padding-block: 48px 56px; display: grid; gap: 30px; }
+  .intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px 48px; align-items: end; }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--on-navy-muted); font-weight: 700; font-size: 14px; letter-spacing: .02em; }
+  .kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: #ff5a5f; box-shadow: 0 0 0 0 rgba(255,90,95,.6); animation: rec 1.6s infinite; }
+  @keyframes rec { 0% { box-shadow: 0 0 0 0 rgba(255,90,95,.55); } 70% { box-shadow: 0 0 0 10px rgba(255,90,95,0); } 100% { box-shadow: 0 0 0 0 rgba(255,90,95,0); } }
+  .intro h1 { font-size: clamp(32px, 4.6vw, 52px); font-weight: 900; letter-spacing: -.02em; margin-top: 10px; }
+  .intro h1 span { color: var(--sky); }
+  .intro .lead { color: var(--on-navy-muted); font-size: 18px; }
+  .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .rise.d1 { animation-delay: .08s; } .rise.d2 { animation-delay: .16s; } .rise.d3 { animation-delay: .24s; }
+  @keyframes rise { from { transform: translateY(14px); opacity: .001; } to { transform: none; opacity: 1; } }
+  @media (max-width: 860px) { .intro { grid-template-columns: 1fr; } }
+
+  /* Player */
+  .player { display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start; }
+  .chapters { display: grid; gap: 6px; min-width: 0; }
+  .chap { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: center; text-align: left; width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--on-navy); cursor: pointer; position: relative; overflow: hidden; }
+  .chap:hover { background: rgba(255,255,255,.06); }
+  .chap .num { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; background: rgba(255,255,255,.08); color: var(--on-navy-muted); }
+  .chap .num .icon { width: 19px; height: 19px; }
+  .chap b { display: block; font-size: 15px; font-weight: 800; }
+  .chap small { display: block; color: var(--on-navy-muted); font-size: 13px; line-height: 1.35; }
+  .chap time { font: 600 12px var(--mono); color: var(--on-navy-muted); font-variant-numeric: tabular-nums; }
+  .chap .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--sky); }
+  .chap[aria-current="true"] { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.16); }
+  .chap[aria-current="true"] .num { background: var(--sky); color: #fff; }
+
+  .screen-col { display: grid; gap: 14px; min-width: 0; }
+  .browser { background: #0f1440; border-radius: 12px; overflow: hidden; box-shadow: 0 30px 70px rgba(5,8,40,.55), 0 0 0 1px rgba(255,255,255,.08); }
+  .browser-bar { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #1b2260; }
+  .browser-bar i { width: 11px; height: 11px; border-radius: 50%; background: #39417e; display: block; }
+  .browser-bar i:nth-child(1) { background: #ff5f57; } .browser-bar i:nth-child(2) { background: #febc2e; } .browser-bar i:nth-child(3) { background: #28c840; }
+  .address { margin-left: 8px; flex: 1; min-width: 0; background: #11174a; color: #aeb5e6; font: 500 12.5px var(--mono); padding: 5px 12px; border-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .viewport { position: relative; background: #fff; aspect-ratio: 1280 / 760; display: grid; place-items: center; overflow: hidden; }
+  .viewport video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+  .viewport.is-phone { background: linear-gradient(160deg, #e9eef8, #f6f8fc); }
+  .viewport.is-phone video { inset: 4% auto 4% 50%; transform: translateX(-50%); width: auto; height: 92%; aspect-ratio: 390 / 780; border-radius: 26px; border: 9px solid #141a3d; box-shadow: 0 18px 40px rgba(20,26,61,.35); background: #fff; }
+  .caption { position: absolute; left: 16px; bottom: 16px; max-width: calc(100% - 32px); display: flex; align-items: center; gap: 10px; background: rgba(20,27,82,.92); color: #fff; padding: 9px 14px 9px 10px; border-radius: 999px; font-weight: 700; font-size: 15px; box-shadow: 0 8px 24px rgba(0,0,0,.25); transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .35s; }
+  .caption .n { width: 24px; height: 24px; border-radius: 50%; background: var(--sky); display: grid; place-items: center; font-size: 13px; flex: none; }
+  .caption.swap { transform: translateY(8px); opacity: 0; }
+  .bigplay { position: absolute; inset: 0; margin: auto; width: 76px; height: 76px; border-radius: 50%; border: none; background: rgba(20,178,230,.95); color: #fff; display: grid; place-items: center; cursor: pointer; box-shadow: 0 10px 30px rgba(20,178,230,.45); }
+  .bigplay .icon { width: 34px; height: 34px; margin-left: 4px; }
+
+  .controls { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; }
+  .ctl { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); color: #fff; display: grid; place-items: center; cursor: pointer; }
+  .ctl:hover { background: rgba(255,255,255,.14); }
+  .track { position: relative; height: 8px; border-radius: 99px; background: rgba(255,255,255,.16); cursor: pointer; }
+  .track .fill { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 99px; background: var(--sky); }
+  .track .mark { position: absolute; top: -3px; width: 3px; height: 14px; border-radius: 2px; background: rgba(255,255,255,.75); transform: translateX(-1px); }
+  .clock { font: 600 13px var(--mono); color: var(--on-navy-muted); font-variant-numeric: tabular-nums; min-width: 92px; text-align: right; }
+
+  .steps { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .steps::-webkit-scrollbar { display: none; }
+  .stp { text-align: left; border: 1px solid var(--on-navy-line); background: rgba(255,255,255,.04); color: var(--on-navy-muted); border-radius: 8px; padding: 9px 11px; cursor: pointer; font-size: 13.5px; font-weight: 700; line-height: 1.3; position: relative; overflow: hidden; display: grid; gap: 3px; }
+  .stp span { font: 600 11px var(--mono); opacity: .8; }
+  .stp .sfill { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--sky); }
+  .stp.on { color: #fff; border-color: rgba(20,178,230,.7); background: rgba(20,178,230,.12); }
+  .stp.done { color: #fff; }
+
+  @media (max-width: 980px) {
+    .player { grid-template-columns: 1fr; }
+    .chapters { grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr); overflow-x: auto; scrollbar-width: none; }
+    .chapters::-webkit-scrollbar { display: none; }
+  }
+  @media (max-width: 560px) {
+    .caption { font-size: 13px; left: 10px; bottom: 10px; }
+    .bigplay { width: 60px; height: 60px; }
+    .clock { min-width: 0; }
+  }
+
+  /* Journey */
+  .section { padding-block: 64px; }
+  .tinted { background: var(--tint); }
+  .head { display: grid; gap: 8px; max-width: 720px; margin-bottom: 30px; }
+  .head h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; }
+  .head p { color: var(--muted); }
+  .journey { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; position: relative; }
+  .journey::before { content: ""; position: absolute; left: 6%; right: 6%; top: 34px; height: 2px; background: repeating-linear-gradient(90deg, var(--sky) 0 8px, transparent 8px 14px); opacity: .6; }
+  .stop { position: relative; display: grid; justify-items: center; text-align: center; gap: 8px; background: none; border: none; cursor: pointer; color: var(--ink); padding: 0 4px; }
+  .stop .disc { width: 68px; height: 68px; border-radius: 50%; background: var(--bg); border: 2px solid var(--sky); display: grid; place-items: center; color: var(--navy); transition: transform .2s, background .2s; position: relative; z-index: 1; }
+  .stop .disc .icon { width: 28px; height: 28px; }
+  .stop:hover .disc { transform: translateY(-3px); background: var(--sky-soft); }
+  .stop b { font-size: 15px; font-weight: 800; }
+  .stop small { color: var(--muted); font-size: 13px; line-height: 1.4; }
+  .stop .watch { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--sky); }
+  @media (max-width: 900px) { .journey { grid-template-columns: repeat(3, 1fr); row-gap: 28px; } .journey::before { display: none; } }
+  @media (max-width: 480px) { .journey { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Proof */
+  .proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .fact { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 6px; align-content: start; }
+  .fact b { font-size: 34px; font-weight: 900; color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
+  .fact b small { font-size: 16px; font-weight: 700; color: var(--muted); }
+  .fact span { color: var(--muted); font-size: 14px; }
+  @media (max-width: 900px) { .proof { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 440px) { .proof { grid-template-columns: 1fr; } }
+
+  /* Try it */
+  .try { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%); color: var(--on-navy); border-radius: 16px; padding: 36px; position: relative; overflow: hidden; }
+  .try::after { content: ""; position: absolute; right: -120px; top: -120px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(20,178,230,.35), transparent 65%); pointer-events: none; }
+  .try h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 900; }
+  .try p { color: var(--on-navy-muted); margin-top: 10px; }
+  .try-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .creds { background: rgba(255,255,255,.06); border: 1px solid var(--on-navy-line); border-radius: 12px; overflow: hidden; position: relative; z-index: 1; }
+  .creds div { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 16px; flex-wrap: wrap; }
+  .creds div + div { border-top: 1px solid var(--on-navy-line); }
+  .creds span { color: var(--on-navy-muted); font-size: 14px; }
+  .creds code { font: 600 14px var(--mono); background: rgba(255,255,255,.1); color: #fff; padding: 4px 9px; border-radius: 5px; }
+  .copy { margin-left: 6px; font: 700 12px var(--font); color: #fff; background: transparent; border: 1px solid rgba(255,255,255,.3); border-radius: 5px; padding: 3px 8px; cursor: pointer; }
+  .pending { color: var(--on-navy-muted); font-size: 14px; margin-top: 12px; }
+  @media (max-width: 860px) { .try { grid-template-columns: 1fr; padding: 26px 20px; } }
+
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { padding-block: 22px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 13px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise, .kicker .dot { animation: none; }
+    .caption { transition: none; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-clinic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="11" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M15 10h3M15 13.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v2M14 18h2v2M18 18h2v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M7 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 00-3-3h-7v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z M14 3v5h5M9 13h6M9 17h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 18.2h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 4.5h3.5v15H7zM13.5 4.5H17v15h-3.5z" fill="currentColor"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M5 5v14l10-7zM17 5h2.5v14H17z" fill="currentColor"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 18.5l1.2-3.6A7.5 7.5 0 1112 19.5a7.6 7.6 0 01-3.6-.9L4 18.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" id="homeLink" href="#top" aria-label="Company website"><span class="logo-mark"><svg class="icon"><use href="#i-clinic"/></svg></span><span data-brand-split>UpcharDesk</span></a>
+    <span class="crumb">Product tour</span>
+    <div class="top-right">
+      <a class="btn btn-line" href="#try">Try it yourself</a>
+      <a class="btn btn-sky" id="topCta" href="#try">Book free demo</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="stage" aria-labelledby="tour-title">
+    <div class="wrap">
+      <div class="intro">
+        <div>
+          <span class="kicker rise"><span class="dot"></span>Real screen recordings &middot; made-up patients</span>
+          <h1 id="tour-title" class="rise d1">Watch a hospital day, <span>start to finish</span></h1>
+        </div>
+        <p class="lead rise d2">Six short videos of the actual software: a patient registered, tests billed, a bed given, a discharge bill worked out and the owner checking the day's money. Pick any chapter or step.</p>
+      </div>
+
+      <div class="player rise d3">
+        <div class="chapters" id="chapters" role="tablist" aria-label="Chapters"></div>
+        <div class="screen-col">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i><span class="address" id="address">demo-hospital/opd/new</span></div>
+            <div class="viewport" id="viewport">
+              <video id="video" muted playsinline preload="metadata" aria-describedby="caption"></video>
+              <div class="caption" id="caption" aria-live="polite"><span class="n" id="capN">1</span><span id="capText"></span></div>
+              <button class="bigplay" id="bigPlay" type="button" aria-label="Play" hidden><svg class="icon"><use href="#i-play"/></svg></button>
+            </div>
+          </div>
+          <div class="controls">
+            <button class="ctl" id="playBtn" type="button" aria-label="Pause"><svg class="icon"><use href="#i-pause"/></svg></button>
+            <div class="track" id="track" role="slider" tabindex="0" aria-label="Position in video" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="fill"></div></div>
+            <span class="clock" id="clock">0:00 / 0:00</span>
+          </div>
+          <div class="steps" id="steps" aria-label="Steps in this chapter"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="journey-title">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="journey-title">One patient, one system, every counter</h2>
+        <p>The same record moves from reception to discharge. Nobody types a patient twice. Tap a stop to watch that part.</p>
+      </div>
+      <div class="journey" id="journey"></div>
+    </div>
+  </section>
+
+  <section class="section tinted" aria-labelledby="proof-title">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="proof-title">What you just watched</h2>
+        <p>Measured from the videos above and the system's own checks.</p>
+      </div>
+      <div class="proof">
+        <div class="fact"><b>&lt;30 <small>sec</small></b><span>From typing a new patient's name to a printed OPD slip, in the reception video.</span></div>
+        <div class="fact"><b>1 <small>click</small></b><span>Per common test at the billing counter. The price comes from your own list.</span></div>
+        <div class="fact"><b>0 <small>sums</small></b><span>Done by hand at discharge. Bed days, fees, tests, advances and discount are added for you.</span></div>
+        <div class="fact"><b>672</b><span>Automatic checks run before every update reaches a hospital.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="try" aria-labelledby="try-title">
+    <div class="wrap">
+      <div class="try">
+        <div>
+          <h2 id="try-title">Now try it yourself</h2>
+          <p>Open the live demo and click around as reception or as the owner. Every patient there is made up, and it starts fresh every night, so nothing you do can break it.</p>
+          <div class="try-actions">
+            <a class="btn btn-sky" id="demoLink" href="#try" target="_blank" rel="noopener"><svg class="icon"><use href="#i-bolt"/></svg>Open the live demo</a>
+            <a class="btn btn-ghost" id="waLink" href="#try" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg>Book a free demo</a>
+          </div>
+          <p class="pending" id="demoPending" hidden>The live demo link is being set up. Message us and we'll send it to you.</p>
+        </div>
+        <div class="creds" aria-label="Demo logins">
+          <div><span>Reception (Staff Login)</span><span><code>demo-staff</code><button class="copy" type="button" data-copy="demo-staff">Copy</button></span></div>
+          <div><span>Owner (Owner Login)</span><span><code>demo-owner</code><button class="copy" type="button" data-copy="demo-owner">Copy</button></span></div>
+          <div><span>Password for both</span><span><code>Demo@2026</code><button class="copy" type="button" data-copy="Demo@2026">Copy</button></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> <span data-brand>UpcharDesk</span>. Hospital &amp; clinic software, made in Uttar Pradesh.</span>
+    <span>Every patient name and amount in these videos is made up.</span>
+  </div>
+</footer>
+
+<script>
+/* EDIT HERE: the same details as the company website */
+const CONFIG = {
+  brand: "UpcharDesk",
+  websiteUrl: "../",
+  demoUrl: "https://hospital-demo-spl5.onrender.com",
+  whatsapp: "919362414164"
+};
+
+const CHAPTERS = [
+  { id: "opd", icon: "i-id", title: "Reception", sub: "Register and print the slip", path: "opd/new", stop: "Arrives at reception", stopSub: "Registered, fee taken, slip printed" },
+  { id: "billing", icon: "i-card", title: "Billing counter", sub: "Tests in one click", path: "billing/investigations", stop: "Gets tests done", stopSub: "Billed with one click per test" },
+  { id: "ipd", icon: "i-bed", title: "Beds & admission", sub: "Live beds, admit in steps", path: "ipd", stop: "Needs a bed", stopSub: "Admitted to a free bed" },
+  { id: "discharge", icon: "i-file", title: "Discharge", sub: "Final bill, worked out", path: "ipd/discharge", stop: "Goes home", stopSub: "Final bill and summary printed" },
+  { id: "reports", icon: "i-chart", title: "Owner's reports", sub: "The day's money, by mode", path: "reports/daily", stop: "Owner checks", stopSub: "Collection by cash, UPI, card" },
+  { id: "phone", icon: "i-phone", title: "On the phone", sub: "Everything, anywhere", path: "ipd", mobile: true, stop: "From anywhere", stopSub: "On the doctor's phone" }
+];
+const TIMES = {"opd": {"steps": [[0, "Reception logs in"], [5.98, "Today's dashboard"], [8.93, "Type the patient's details"], [16.08, "Pick the doctor: the fee fills itself"], [20.16, "Save and print the slip"], [24.65, "The printed OPD slip, with QR code"]], "duration": 29.2}, "billing": {"steps": [[0, "Find the patient by mobile number"], [5.85, "One click for each test"], [10.56, "The total and payment, worked out"], [14.52, "Saved to today's collection"]], "duration": 18.07}, "ipd": {"steps": [[0, "Every bed, live"], [6.26, "Admit a patient in a few steps"], [10.7, "Choose the ward and a free bed"], [14.49, "Admitted: the bed is now taken"]], "duration": 23.93}, "discharge": {"steps": [[0, "Discharge from the bed list"], [2.8, "Diagnosis, procedure and discount"], [8.31, "The final bill, minus advances"], [14.52, "Printed bill and discharge summary"]], "duration": 20.15}, "reports": {"steps": [[0, "The owner logs in"], [6.73, "Money and beds at a glance"], [9.57, "Collection by cash, UPI and card"], [18.66, "Doctor-wise revenue"]], "duration": 26.68}, "phone": {"steps": [[0, "On the doctor's phone"], [12.12, "Admitted patients, anywhere"]], "duration": 17.56}};
+
+const $ = id => document.getElementById(id);
+const esc = v => String(v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const waLink = t => CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}` : null;
+
+// Brand
+for (const el of document.querySelectorAll("[data-brand]")) el.textContent = CONFIG.brand;
+const split = CONFIG.brand.match(/^(.+?)([A-Z][a-z]+)$/);
+document.querySelector("[data-brand-split]").innerHTML = split ? `${esc(split[1])}<b>${esc(split[2])}</b>` : esc(CONFIG.brand);
+$("year").textContent = new Date().getFullYear();
+if (CONFIG.websiteUrl) $("homeLink").href = CONFIG.websiteUrl;
+
+// Chapters list and journey
+$("chapters").innerHTML = CHAPTERS.map((c, i) => `
+  <button class="chap" type="button" role="tab" data-ch="${i}" aria-current="false">
+    <span class="num"><svg class="icon"><use href="#${c.icon}"/></svg></span>
+    <span><b>${esc(c.title)}</b><small>${esc(c.sub)}</small></span>
+    <time>${fmt(TIMES[c.id].duration)}</time><span class="bar"></span>
+  </button>`).join("");
+$("journey").innerHTML = CHAPTERS.map((c, i) => `
+  <button class="stop" type="button" data-ch="${i}">
+    <span class="disc"><svg class="icon"><use href="#${c.icon}"/></svg></span>
+    <b>${esc(c.stop)}</b><small>${esc(c.stopSub)}</small><span class="watch">Watch ${fmt(TIMES[c.id].duration)}</span>
+  </button>`).join("");
+
+// Player
+const video = $("video"), chapEls = [...document.querySelectorAll(".chap")];
+let cur = -1, stepEls = [], lastStep = -1, wantPlay = !reduced;
+
+function setPlayIcon(playing) {
+  $("playBtn").innerHTML = `<svg class="icon"><use href="#i-${playing ? "pause" : "play"}"/></svg>`;
+  $("playBtn").setAttribute("aria-label", playing ? "Pause" : "Play");
+  $("bigPlay").hidden = playing;
+}
+
+function load(i, play) {
+  cur = i; lastStep = -1;
+  const c = CHAPTERS[i], t = TIMES[c.id];
+  chapEls.forEach((el, n) => { el.setAttribute("aria-current", String(n === i)); el.setAttribute("aria-selected", String(n === i)); el.querySelector(".bar").style.width = "0"; });
+  chapEls[i].scrollIntoView({ block: "nearest", inline: "nearest" });
+  $("viewport").classList.toggle("is-phone", !!c.mobile);
+  $("address").textContent = `demo-hospital/${c.path}`;
+  video.poster = `media/${c.id}.jpg`;
+  video.src = `media/${c.id}.mp4`;
+  $("steps").innerHTML = t.steps.map(([s, label], n) => `<button class="stp" type="button" data-t="${s}"><span>${n + 1} \u00b7 ${fmt(s)}</span>${esc(label)}<i class="sfill"></i></button>`).join("");
+  stepEls = [...document.querySelectorAll(".stp")];
+  $("track").querySelectorAll(".mark").forEach(m => m.remove());
+  t.steps.slice(1).forEach(([s]) => { const m = document.createElement("span"); m.className = "mark"; m.style.left = (s / t.duration * 100) + "%"; $("track").appendChild(m); });
+  showStep(0);
+  if (play) video.play().catch(() => setPlayIcon(false)); else setPlayIcon(false);
+}
+
+function showStep(n) {
+  if (n === lastStep) return;
+  lastStep = n;
+  const label = TIMES[CHAPTERS[cur].id].steps[n][1], cap = $("caption");
+  if (reduced) { $("capN").textContent = n + 1; $("capText").textContent = label; return; }
+  cap.classList.add("swap");
+  setTimeout(() => { $("capN").textContent = n + 1; $("capText").textContent = label; cap.classList.remove("swap"); }, 180);
+}
+
+function tick() {
+  if (cur < 0) return;
+  const t = TIMES[CHAPTERS[cur].id], d = video.duration || t.duration, now = video.currentTime;
+  const pct = Math.min(100, now / d * 100);
+  $("fill").style.width = pct + "%";
+  $("track").setAttribute("aria-valuenow", String(Math.round(pct)));
+  chapEls[cur].querySelector(".bar").style.width = pct + "%";
+  $("clock").textContent = `${fmt(now)} / ${fmt(d)}`;
+  let n = 0;
+  t.steps.forEach(([s], k) => { if (now >= s) n = k; });
+  stepEls.forEach((el, k) => {
+    el.classList.toggle("on", k === n); el.classList.toggle("done", k < n);
+    const start = t.steps[k][0], end = k + 1 < t.steps.length ? t.steps[k + 1][0] : d;
+    el.querySelector(".sfill").style.width = (k < n ? 100 : k > n ? 0 : Math.min(100, (now - start) / (end - start) * 100)) + "%";
+  });
+  showStep(n);
+}
+video.addEventListener("timeupdate", tick);
+video.addEventListener("play", () => setPlayIcon(true));
+video.addEventListener("pause", () => setPlayIcon(false));
+video.addEventListener("ended", () => load((cur + 1) % CHAPTERS.length, true));
+let raf;
+const loop = () => { tick(); raf = requestAnimationFrame(loop); };
+video.addEventListener("play", () => { cancelAnimationFrame(raf); loop(); });
+video.addEventListener("pause", () => cancelAnimationFrame(raf));
+
+function toggle() { if (video.paused) { wantPlay = true; video.play().catch(() => {}); } else { wantPlay = false; video.pause(); } }
+$("playBtn").addEventListener("click", toggle);
+$("bigPlay").addEventListener("click", toggle);
+video.addEventListener("click", toggle);
+$("chapters").addEventListener("click", e => { const b = e.target.closest("[data-ch]"); if (b) { wantPlay = true; load(+b.dataset.ch, true); } });
+$("journey").addEventListener("click", e => {
+  const b = e.target.closest("[data-ch]"); if (!b) return;
+  wantPlay = true; load(+b.dataset.ch, true);
+  document.querySelector(".stage").scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+});
+$("steps").addEventListener("click", e => { const b = e.target.closest("[data-t]"); if (b) { video.currentTime = +b.dataset.t + 0.01; wantPlay = true; video.play().catch(() => {}); tick(); } });
+function seekFrom(x) { const r = $("track").getBoundingClientRect(); video.currentTime = Math.max(0, Math.min(1, (x - r.left) / r.width)) * (video.duration || TIMES[CHAPTERS[cur].id].duration); tick(); }
+$("track").addEventListener("pointerdown", e => { seekFrom(e.clientX); const mv = ev => seekFrom(ev.clientX); $("track").addEventListener("pointermove", mv); addEventListener("pointerup", () => $("track").removeEventListener("pointermove", mv), { once: true }); });
+$("track").addEventListener("keydown", e => { if (e.key === "ArrowRight") { video.currentTime += 3; tick(); } if (e.key === "ArrowLeft") { video.currentTime -= 3; tick(); } });
+document.addEventListener("keydown", e => { if (e.key === " " && e.target === document.body) { e.preventDefault(); toggle(); } });
+
+// Play only while the player is on screen
+new IntersectionObserver(([en]) => { if (en.isIntersecting) { if (wantPlay && video.paused) video.play().catch(() => {}); } else if (!video.paused) video.pause(); }, { threshold: .35 }).observe($("viewport"));
+
+load(0, !reduced);
+
+// Try it yourself
+const demo = $("demoLink");
+if (CONFIG.demoUrl.startsWith("https://")) demo.href = CONFIG.demoUrl; else { demo.hidden = true; $("demoPending").hidden = false; }
+const wa = waLink("Hello, I watched the product tour and would like a demo at my hospital.");
+if (wa) { $("waLink").href = wa; $("topCta").href = wa; $("topCta").target = "_blank"; $("topCta").rel = "noopener"; }
+else if (CONFIG.websiteUrl) { $("waLink").href = CONFIG.websiteUrl + "#contact"; $("topCta").href = CONFIG.websiteUrl + "#contact"; }
+document.addEventListener("click", async e => {
+  const b = e.target.closest("[data-copy]"); if (!b) return;
+  try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Copied"; }
+  catch { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); getSelection().removeAllRanges(); getSelection().addRange(r); b.textContent = "Selected"; }
+  setTimeout(() => (b.textContent = "Copy"), 1500);
+});
+</script>
+</body>
+</html>
