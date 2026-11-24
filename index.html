@@ -742,7 +742,7 @@ const CONFIG = {
   phone: "",                           // e.g. "+91 9XXXX XXXXX"
   email: "",                           // e.g. "hello@yourdomain.in"
   city: "Kushinagar, Uttar Pradesh",
-  demoUrl: "https://hospital-demo-spl5.onrender.com",                         // live demo address, e.g. "https://hospital-demo.onrender.com"
+  demoUrl: "demo/",                    // opens /demo, which forwards to the live demo (address set in demo/index.html)
   tourUrl: "tour/",
   price: "₹1,200",
   company: {                           // from your registration certificate
@@ -868,7 +868,7 @@ $("price").firstChild.textContent = CONFIG.price + " ";
 
 // Demo and tour links
 const demo = $("demoLink");
-if (CONFIG.demoUrl.startsWith("https://")) demo.href = CONFIG.demoUrl;
+if (CONFIG.demoUrl) demo.href = CONFIG.demoUrl;
 else { demo.hidden = true; $("demoPending").hidden = false; }
 if (/^(https:\/\/|[a-z])/.test(CONFIG.tourUrl)) { $("tourLink").href = CONFIG.tourUrl; $("tourTile").href = CONFIG.tourUrl; }
 else { $("tourLink").hidden = true; $("tourTile").removeAttribute("target"); }

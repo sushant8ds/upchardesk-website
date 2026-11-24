@@ -316,7 +316,7 @@
 const CONFIG = {
   brand: "UpcharDesk",
   websiteUrl: "../",
-  demoUrl: "https://hospital-demo-spl5.onrender.com",
+  demoUrl: "../demo/",
   whatsapp: "919362414164"
 };
 
@@ -441,7 +441,7 @@ load(0, !reduced);
 
 // Try it yourself
 const demo = $("demoLink");
-if (CONFIG.demoUrl.startsWith("https://")) demo.href = CONFIG.demoUrl; else { demo.hidden = true; $("demoPending").hidden = false; }
+if (CONFIG.demoUrl) demo.href = CONFIG.demoUrl; else { demo.hidden = true; $("demoPending").hidden = false; }
 const wa = waLink("Hello, I watched the product tour and would like a demo at my hospital.");
 if (wa) { $("waLink").href = wa; $("topCta").href = wa; $("topCta").target = "_blank"; $("topCta").rel = "noopener"; }
 else if (CONFIG.websiteUrl) { $("waLink").href = CONFIG.websiteUrl + "#contact"; $("topCta").href = CONFIG.websiteUrl + "#contact"; }

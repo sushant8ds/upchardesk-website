@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opening the live demo · UpcharDesk</title>
+<meta name="description" content="The live demo of UpcharDesk hospital software. Every patient in it is made up.">
+<!-- The live demo runs on its own server. Change the address here (two places) if it ever moves. -->
+<meta http-equiv="refresh" content="1; url=https://hospital-demo-spl5.onrender.com/login">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap">
+<style>
+  :root { --navy: #222c7d; --sky: #14b2e6; --muted: #c3c8ec; color-scheme: light; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--navy); color: #fff; font-family: "Nunito Sans", "Segoe UI", system-ui, sans-serif; display: grid; place-items: center; text-align: center; padding: 0 16px; }
+  main { display: grid; gap: 14px; justify-items: center; max-width: 30em; }
+  .spin { width: 44px; height: 44px; border-radius: 50%; border: 4px solid rgba(255,255,255,.2); border-top-color: var(--sky); animation: s 0.9s linear infinite; }
+  @keyframes s { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+  h1 { font-size: 26px; margin: 0; font-weight: 800; }
+  p { color: var(--muted); margin: 0; line-height: 1.5; }
+  code { background: rgba(255,255,255,.12); padding: 2px 8px; border-radius: 5px; color: #fff; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  a.btn { display: inline-block; background: var(--sky); color: #fff; text-decoration: none; font-weight: 800; padding: 12px 22px; border-radius: 6px; margin-top: 6px; }
+  a.back { color: #fff; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="spin" aria-hidden="true"></div>
+  <h1>Opening the live demo…</h1>
+  <p>Log in as reception with <code>demo-staff</code> or as the owner with <code>demo-owner</code>. The password for both is <code>Demo@2026</code>. Every patient there is made up.</p>
+  <a class="btn" href="https://hospital-demo-spl5.onrender.com/login">Open the demo now</a>
+  <a class="back" href="../">Back to the website</a>
+</main>
+<script>setTimeout(function () { location.replace("https://hospital-demo-spl5.onrender.com/login"); }, 1200);</script>
+</body>
+</html>
