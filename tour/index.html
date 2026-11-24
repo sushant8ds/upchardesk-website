@@ -12,6 +12,9 @@
 <meta property="og:description" content="Hospital and clinic software for OPD, billing, beds, discharge and reports. Made in Uttar Pradesh. Watch the video tour and try the live demo.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#222c7d">
+<meta property="og:url" content="https://upchardesk.onrender.com/tour/">
+<meta property="og:image" content="https://upchardesk.onrender.com/img/share-card.png">
+<link rel="canonical" href="https://upchardesk.onrender.com/tour/">
 <style>html,body{margin:0}</style>
 </head>
 <body>
@@ -315,8 +318,8 @@
 /* EDIT HERE: the same details as the company website */
 const CONFIG = {
   brand: "UpcharDesk",
-  websiteUrl: "../",
-  demoUrl: "../demo/",
+  websiteUrl: "/",
+  demoUrl: "/demo/",
   whatsapp: "919362414164"
 };
 
@@ -373,8 +376,8 @@ function load(i, play) {
   chapEls[i].scrollIntoView({ block: "nearest", inline: "nearest" });
   $("viewport").classList.toggle("is-phone", !!c.mobile);
   $("address").textContent = `demo-hospital/${c.path}`;
-  video.poster = `media/${c.id}.jpg`;
-  video.src = `media/${c.id}.mp4`;
+  video.poster = `/tour/media/${c.id}.jpg`;
+  video.src = `/tour/media/${c.id}.mp4`;
   $("steps").innerHTML = t.steps.map(([s, label], n) => `<button class="stp" type="button" data-t="${s}"><span>${n + 1} \u00b7 ${fmt(s)}</span>${esc(label)}<i class="sfill"></i></button>`).join("");
   stepEls = [...document.querySelectorAll(".stp")];
   $("track").querySelectorAll(".mark").forEach(m => m.remove());
