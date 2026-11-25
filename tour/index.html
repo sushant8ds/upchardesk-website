@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap">
 <meta property="og:title" content="Hospital Software Tour">
-<meta property="og:description" content="Hospital and clinic software for OPD, billing, beds, discharge and reports. Made in Uttar Pradesh. Watch the video tour and try the live demo.">
+<meta property="og:description" content="Upchar SoftDesk Medisoft Manager: software for clinics, dental clinics, nursing homes, hospitals and diagnostic centres. Made in collaboration with doctors. Lucknow based.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#222c7d">
 <meta property="og:url" content="https://upchardesk.onrender.com/tour/">
@@ -218,7 +218,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" id="homeLink" href="#top" aria-label="Company website"><span class="logo-mark"><svg class="icon"><use href="#i-clinic"/></svg></span><span data-brand-split>UpcharDesk</span></a>
+    <a class="logo" id="homeLink" href="#top" aria-label="Company website"><span class="logo-mark"><svg class="icon"><use href="#i-clinic"/></svg></span><span data-brand-split>Upchar SoftDesk</span></a>
     <span class="crumb">Product tour</span>
     <div class="top-right">
       <a class="btn btn-line" href="#try">Try it yourself</a>
@@ -309,7 +309,7 @@
 
 <footer>
   <div class="wrap">
-    <span>&copy; <span id="year"></span> <span data-brand>UpcharDesk</span>. Hospital &amp; clinic software, made in Uttar Pradesh.</span>
+    <span>&copy; <span id="year"></span> <span data-brand>Upchar SoftDesk</span> · Medisoft Manager. Made in collaboration with doctors · Lucknow.</span>
     <span>Every patient name and amount in these videos is made up.</span>
   </div>
 </footer>
@@ -317,7 +317,7 @@
 <script>
 /* EDIT HERE: the same details as the company website */
 const CONFIG = {
-  brand: "UpcharDesk",
+  brand: "Upchar SoftDesk",
   websiteUrl: "/",
   demoUrl: "/demo/",
   whatsapp: "919362414164"
@@ -341,7 +341,8 @@ const waLink = t => CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${e
 
 // Brand
 for (const el of document.querySelectorAll("[data-brand]")) el.textContent = CONFIG.brand;
-const split = CONFIG.brand.match(/^(.+?)([A-Z][a-z]+)$/);
+// Logo: first word in dark, the rest in blue ("Upchar SoftDesk"); one-word names split at the last capital
+const split = CONFIG.brand.includes(" ") ? CONFIG.brand.match(/^(\S+ )(.+)$/) : CONFIG.brand.match(/^(.+?)([A-Z][a-z]+)$/);
 document.querySelector("[data-brand-split]").innerHTML = split ? `${esc(split[1])}<b>${esc(split[2])}</b>` : esc(CONFIG.brand);
 $("year").textContent = new Date().getFullYear();
 if (CONFIG.websiteUrl) $("homeLink").href = CONFIG.websiteUrl;
