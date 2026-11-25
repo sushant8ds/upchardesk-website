@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /demo/open/
+Disallow: /dental/demo/
 
 Sitemap: https://upchardesk.onrender.com/sitemap.xml

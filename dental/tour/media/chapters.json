@@ -1,0 +1,103 @@
+{
+ "d_appointments": {
+  "steps": [
+   [
+    0,
+    "The front desk logs in"
+   ],
+   [
+    4.82,
+    "Today's chair schedule"
+   ],
+   [
+    8.47,
+    "The week's appointment book"
+   ],
+   [
+    11.74,
+    "Book a new caller in seconds"
+   ],
+   [
+    22.86,
+    "Check in when the patient arrives"
+   ]
+  ],
+  "duration": 28.88
+ },
+ "d_chart": {
+  "steps": [
+   [
+    0.8,
+    "Find the patient"
+   ],
+   [
+    4.74,
+    "The tooth chart, as you face the patient"
+   ],
+   [
+    6.78,
+    "Tap a tooth to note its condition"
+   ],
+   [
+    11.82,
+    "Plan a treatment on that tooth"
+   ]
+  ],
+  "duration": 20.6
+ },
+ "d_plan": {
+  "steps": [
+   [
+    0.8,
+    "Treatment plan with every sitting"
+   ],
+   [
+    3.05,
+    "Tick a treatment when it is done"
+   ],
+   [
+    5.68,
+    "Take the next instalment"
+   ],
+   [
+    11.92,
+    "Paid, and the balance left"
+   ]
+  ],
+  "duration": 15.83
+ },
+ "d_owner": {
+  "steps": [
+   [
+    0,
+    "The owner logs in"
+   ],
+   [
+    5.23,
+    "Collected today, and still to collect"
+   ],
+   [
+    9.09,
+    "Your own price list"
+   ],
+   [
+    12.74,
+    "Collection by cash, UPI and card"
+   ]
+  ],
+  "duration": 20.6
+ },
+ "d_phone": {
+  "steps": [
+   [
+    0,
+    "On the dentist's phone"
+   ],
+   [
+    8.05,
+    "A patient's chart and plan, anywhere"
+   ]
+  ],
+  "duration": 14.52
+ }
+}
