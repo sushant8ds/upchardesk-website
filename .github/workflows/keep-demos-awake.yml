@@ -3,7 +3,7 @@ name: Keep the demos awake (daytime)
 # The live demos run on Render's free plan, which allows 750 hours a month for all free
 # services together and puts a service to sleep after 15 quiet minutes. Two demos awake
 # all day and night would need about 1,490 hours, so they are kept awake only from
-# 9:30 am to 7:30 pm India time (04:00-13:59 UTC): about 640 hours a month for both.
+# 10:30 am to 9:30 pm India time (05:00-15:59 UTC): about 700 hours a month for both.
 # Outside those hours the first visitor waits up to a minute while a demo wakes up.
 #
 # It only opens each demo's login page. To add or remove a demo, edit the DEMOS list.
@@ -11,7 +11,7 @@ name: Keep the demos awake (daytime)
 
 on:
   schedule:
-    - cron: "*/10 4-13 * * *"
+    - cron: "*/10 5-15 * * *"
   workflow_dispatch:
 
 permissions: {}
