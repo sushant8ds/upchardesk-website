@@ -1,0 +1,32 @@
+name: Keep the demos awake (daytime)
+
+# The live demos run on Render's free plan, which allows 750 hours a month for all free
+# services together and puts a service to sleep after 15 quiet minutes. Two demos awake
+# all day and night would need about 1,490 hours, so they are kept awake only from
+# 9:30 am to 7:30 pm India time (04:00-13:59 UTC): about 640 hours a month for both.
+# Outside those hours the first visitor waits up to a minute while a demo wakes up.
+#
+# It only opens each demo's login page. To add or remove a demo, edit the DEMOS list.
+# To stop it: GitHub > Actions > this workflow > "..." > Disable workflow.
+
+on:
+  schedule:
+    - cron: "*/10 4-13 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      DEMOS: >-
+        https://hospital-demo-spl5.onrender.com/login
+    steps:
+      - name: Visit each demo
+        run: |
+          for url in $DEMOS; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 90 "$url" || true)
+            echo "$code $url"
+          done
