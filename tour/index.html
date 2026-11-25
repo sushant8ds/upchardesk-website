@@ -73,7 +73,7 @@
   .crumb { color: var(--muted); font-weight: 600; font-size: 14px; padding-left: 16px; border-left: 1px solid var(--line); }
   .top-right { margin-left: auto; display: flex; gap: 12px; align-items: center; }
   .top .btn { padding: 8px 14px; font-size: 14px; }
-  @media (max-width: 720px) { .crumb, .top .btn-line { display: none; } }
+  @media (max-width: 720px) { .crumb { display: none; } .top .btn { padding: 7px 10px; font-size: 13px; } }
   @media (max-width: 420px) { .top .btn-sky { padding-inline: 10px; } }
 
   /* Stage */
@@ -221,8 +221,8 @@
     <a class="logo" id="homeLink" href="#top" aria-label="Company website"><span class="logo-mark"><svg class="icon"><use href="#i-clinic"/></svg></span><span data-brand-split>Upchar SoftDesk</span></a>
     <span class="crumb">Product tour</span>
     <div class="top-right">
-      <a class="btn btn-line" href="#try">Try it yourself</a>
-      <a class="btn btn-sky" id="topCta" href="#try">Book free demo</a>
+      <a class="btn btn-line" href="/demo/">Live Demo</a>
+      <a class="btn btn-sky" id="topCta" href="/contact/">Contact Us</a>
     </div>
   </div>
 </header>
@@ -319,7 +319,7 @@
 const CONFIG = {
   brand: "Upchar SoftDesk",
   websiteUrl: "/",
-  demoUrl: "/demo/",
+  demoUrl: "/demo/open/",
   whatsapp: "919362414164"
 };
 
@@ -447,7 +447,7 @@ load(0, !reduced);
 const demo = $("demoLink");
 if (CONFIG.demoUrl) demo.href = CONFIG.demoUrl; else { demo.hidden = true; $("demoPending").hidden = false; }
 const wa = waLink("Hello, I watched the product tour and would like a demo at my hospital.");
-if (wa) { $("waLink").href = wa; $("topCta").href = wa; $("topCta").target = "_blank"; $("topCta").rel = "noopener"; }
+if (wa) { $("waLink").href = wa; }
 else if (CONFIG.websiteUrl) { $("waLink").href = CONFIG.websiteUrl + "#contact"; $("topCta").href = CONFIG.websiteUrl + "#contact"; }
 document.addEventListener("click", async e => {
   const b = e.target.closest("[data-copy]"); if (!b) return;

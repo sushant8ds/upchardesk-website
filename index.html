@@ -19,346 +19,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://upchardesk.onrender.com/">
 <style>html,body{margin:0}</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<style>
-  /* Layout: a healthcare marketplace-style home page. White header, navy search hero with popular chips,
-     image tiles, round department icons, a sliding carousel, screen cards, navy numbers band,
-     "get the link" block and a navy footer with link columns. Light by design, like a clinic. */
-  :root {
-    --bg: #ffffff;
-    --tint: #f0f5fb;            /* section ground */
-    --ink: #2b2f3a;
-    --muted: #686d7a;
-    --line: #e2e6ee;
-    --navy: #222c7d;            /* hero, bands, footer */
-    --navy-2: #1a2266;
-    --sky: #14b2e6;             /* action colour */
-    --sky-ink: #ffffff;
-    --sky-soft: #e3f6fd;
-    --on-navy: #ffffff;
-    --on-navy-muted: #c3c8ec;
-    --green: #1aa260;
-    --amber: #e8930c;
-    --amber-soft: #fff1da;
-    --t1: #e6f3ff; --t2: #e9f8f1; --t3: #fff2e0; --t4: #f1ecff; --t5: #ffeaf0; --t6: #e5f7f9;
-    --shadow: 0 2px 6px rgba(34, 44, 125, .08), 0 8px 24px rgba(34, 44, 125, .08);
-    --font: "Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-    color-scheme: light;
-  }
-  * { box-sizing: border-box; }
-  [hidden] { display: none !important; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-  body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; }
-  h1, h2, h3, h4 { margin: 0; line-height: 1.2; text-wrap: balance; }
-  p { margin: 0; }
-  a { color: var(--sky); text-decoration: none; }
-  img { max-width: 100%; height: auto; display: block; }
-  button { font-family: var(--font); }
-  :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
-  .wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  section { scroll-margin-top: 76px; }
-  .section { padding-block: 64px; }
-  .tinted { background: var(--tint); }
-  .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px 32px; flex-wrap: wrap; margin-bottom: 28px; }
-  .head > div { max-width: 720px; display: grid; gap: 6px; min-width: 0; }
-  .head h2 { font-size: clamp(24px, 3vw, 30px); font-weight: 700; color: var(--ink); }
-  .head p { color: var(--muted); font-size: 16px; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 6px; padding: 11px 20px; font-weight: 700; font-size: 15px; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
-  .btn-sky { background: var(--sky); color: var(--sky-ink); }
-  .btn-sky:hover { background: #0ea2d3; }
-  .btn-line { background: var(--bg); color: var(--sky); border-color: var(--sky); }
-  .btn-line:hover { background: var(--sky-soft); }
-  .btn-white { background: var(--on-navy); color: var(--navy); }
-  .link-caps { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--sky); }
-  .icon { width: 20px; height: 20px; flex: none; }
-  .badge { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: var(--sky-soft); color: #0c7fa6; }
-  .badge.pilot { background: var(--amber-soft); color: #9a5c00; }
-  .badge.live { background: #e3f6ec; color: #11743f; }
-
-  /* Header */
-  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
-  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--bg); border-bottom: 1px solid var(--line); }
-  .top .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
-  .logo { display: flex; align-items: center; gap: 9px; color: var(--navy); font-weight: 800; font-size: 22px; letter-spacing: -.01em; }
-  .logo-mark { width: 30px; height: 30px; border-radius: 50%; background: var(--sky); display: grid; place-items: center; color: #fff; }
-  .logo-mark .icon { width: 18px; height: 18px; }
-  .logo b { color: var(--sky); font-weight: 800; }
-  .menu { display: flex; gap: 26px; height: 100%; }
-  .menu a { color: var(--ink); font-weight: 600; font-size: 15px; display: flex; align-items: center; border-bottom: 3px solid transparent; padding-top: 3px; }
-  .menu a:hover { border-bottom-color: var(--sky); color: var(--navy); }
-  .top-right { margin-left: auto; display: flex; align-items: center; gap: 18px; }
-  .top-right .plain { color: var(--ink); font-size: 14px; font-weight: 600; }
-  .top-right .plain:hover { color: var(--sky); }
-  .top .btn { padding: 8px 14px; font-size: 14px; }
-  .menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; color: var(--ink); cursor: pointer; }
-  @media (max-width: 1060px) { .top-right .plain { display: none; } }
-  @media (max-width: 880px) {
-    .menu { display: none; position: absolute; top: 68px; left: 0; right: 0; height: auto; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); padding: 6px max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px)); }
-    .menu.open { display: flex; }
-    .menu a { padding: 12px 0; border-bottom: 1px solid var(--line); }
-    .menu-btn { display: block; }
-    .top-right { display: none; }
-  }
-
-  /* Hero */
-  .hero { background: var(--navy); color: var(--on-navy); position: relative; overflow: hidden; }
-  .hero::after { content: ""; position: absolute; inset: auto -10% -60% auto; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(20,178,230,.28), rgba(20,178,230,0) 65%); pointer-events: none; }
-  .hero .wrap { position: relative; z-index: 1; padding-block: 56px 60px; display: grid; justify-items: center; text-align: center; gap: 18px; }
-  .hero .kicker { color: var(--on-navy-muted); font-size: 15px; font-weight: 600; }
-  .hero h1 { font-size: clamp(32px, 5vw, 50px); font-weight: 800; letter-spacing: -.015em; max-width: 16em; }
-  .hero h1 span { color: var(--sky); }
-  .hero .lead { color: var(--on-navy-muted); font-size: 18px; max-width: 40em; }
-  .search { margin-top: 10px; width: 100%; max-width: 860px; display: grid; grid-template-columns: 230px 1fr auto; background: var(--bg); border-radius: 8px; box-shadow: 0 16px 40px rgba(0,0,0,.25); overflow: hidden; text-align: left; }
-  .search label { display: flex; align-items: center; gap: 10px; padding: 0 14px; color: var(--muted); min-width: 0; }
-  .search label + label { border-left: 1px solid var(--line); }
-  .search select, .search input { border: none; outline: none; background: transparent; font: 600 16px var(--font); color: var(--ink); width: 100%; height: 56px; min-width: 0; }
-  .search select { cursor: pointer; }
-  .search .btn { border-radius: 0; height: 100%; padding-inline: 28px; font-size: 16px; }
-  .search .icon { color: var(--muted); }
-  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; align-items: center; max-width: 860px; }
-  .chips > span { color: var(--on-navy-muted); font-size: 14px; font-weight: 600; margin-right: 2px; }
-  .chip { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.28); color: var(--on-navy); padding: 5px 13px; border-radius: 999px; font: 600 14px var(--font); cursor: pointer; }
-  .chip:hover { background: rgba(255,255,255,.18); }
-  .search-msg { color: var(--on-navy); font-size: 14px; min-height: 1.4em; }
-  .made-for { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; color: var(--on-navy-muted); font-size: 14px; font-weight: 600; margin-top: 4px; }
-  .made-for span { display: inline-flex; align-items: center; gap: 7px; }
-  .made-for .icon { width: 17px; height: 17px; color: var(--sky); }
-  @media (max-width: 720px) {
-    .search { grid-template-columns: 1fr; }
-    .search label + label { border-left: none; border-top: 1px solid var(--line); }
-    .search .btn { height: 50px; }
-  }
-
-  /* Image tiles */
-  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .tile { display: grid; grid-template-rows: auto 1fr; border-radius: 10px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); color: var(--ink); transition: box-shadow .2s, transform .2s; }
-  .tile:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-  .tile-pic { height: 168px; position: relative; overflow: hidden; display: grid; place-items: center; }
-  .tile-pic img { position: absolute; left: 16px; top: 18px; width: 125%; max-width: none; border-radius: 6px; box-shadow: 0 6px 18px rgba(34,44,125,.18); }
-  .tile-pic .big { width: 84px; height: 84px; color: var(--navy); opacity: .9; }
-  .tile-body { padding: 14px 16px 18px; display: grid; gap: 3px; align-content: start; }
-  .tile-body h3 { font-size: 18px; font-weight: 700; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .tile-body p { color: var(--muted); font-size: 14px; }
-  @media (max-width: 960px) { .tiles { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 480px) { .tiles { gap: 12px; } .tile-pic { height: 104px; } .tile-pic .big { width: 56px; height: 56px; } .tile-pic img { left: 10px; top: 12px; width: 170%; } .tile-body { padding: 10px 12px 14px; } .tile-body h3 { font-size: 15px; } .tile-body p { font-size: 13px; } }
-
-  /* Round department icons */
-  .rounds { display: grid; grid-template-columns: repeat(8, 1fr); gap: 20px 12px; }
-  .round { display: grid; justify-items: center; text-align: center; gap: 8px; color: var(--ink); }
-  .round .disc { width: 112px; height: 112px; max-width: 100%; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; transition: transform .2s; }
-  .round:hover .disc { transform: scale(1.05); }
-  .round .disc .icon { width: 44px; height: 44px; color: var(--navy); }
-  .round b { font-size: 15px; font-weight: 700; line-height: 1.3; }
-  @media (max-width: 1000px) { .rounds { grid-template-columns: repeat(4, 1fr); } }
-  @media (max-width: 460px) { .rounds { grid-template-columns: repeat(2, 1fr); } .round .disc { width: 96px; height: 96px; } }
-
-  /* Carousel */
-  .carousel { position: relative; }
-  .track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * 20px) / 4); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; }
-  .track::-webkit-scrollbar { display: none; }
-  .card { scroll-snap-align: start; background: var(--bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--line); display: grid; grid-template-rows: auto 1fr; }
-  .card-pic { height: 150px; display: grid; place-items: center; position: relative; }
-  .card-pic .icon { width: 64px; height: 64px; color: var(--navy); }
-  .card-pic .badge { position: absolute; top: 12px; left: 12px; }
-  .card-body { padding: 14px 16px 18px; display: grid; gap: 4px; align-content: start; }
-  .card-body h3 { font-size: 18px; font-weight: 700; }
-  .card-body p { color: var(--muted); font-size: 14px; }
-  .arrow { position: absolute; top: 58px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); box-shadow: var(--shadow); display: grid; place-items: center; cursor: pointer; color: var(--navy); z-index: 2; }
-  .arrow.prev { left: -18px; } .arrow.next { right: -18px; }
-  .arrow:disabled { opacity: 0; pointer-events: none; }
-  @media (max-width: 960px) { .track { grid-auto-columns: calc((100% - 20px) / 2.2); } }
-  @media (max-width: 520px) { .track { grid-auto-columns: 78%; } .arrow { display: none; } }
-  @media (max-width: 1240px) { .arrow.prev { left: 4px; } .arrow.next { right: 4px; } }
-
-  /* Screen cards */
-  .screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .shot { display: grid; gap: 10px; align-content: start; min-width: 0; }
-  .shot button { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; padding: 0; background: var(--tint); cursor: zoom-in; height: 210px; position: relative; }
-  .shot button img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .3s; }
-  .shot button:hover img { transform: scale(1.03); }
-  .shot .cat { font-size: 13px; font-weight: 700; color: var(--sky); }
-  .shot h3 { font-size: 18px; font-weight: 700; }
-  .shot p { color: var(--muted); font-size: 14px; }
-  @media (max-width: 900px) { .screens { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .screens { grid-template-columns: 1fr; } }
-  dialog.viewer { border: none; padding: 0; border-radius: 10px; max-width: min(1100px, 94vw); max-height: 92vh; background: var(--bg); color: var(--ink); }
-  dialog.viewer::backdrop { background: rgba(16, 20, 60, .72); }
-  .viewer-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); font-weight: 700; position: sticky; top: 0; background: var(--bg); }
-  .viewer-bar button { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 5px 12px; cursor: pointer; font-weight: 700; color: var(--ink); }
-
-  /* Features */
-  .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .feature { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 6px; align-content: start; transition: box-shadow .25s, border-color .25s; }
-  .feature .ficon { width: 44px; height: 44px; border-radius: 50%; background: var(--sky-soft); color: #0c7fa6; display: grid; place-items: center; margin-bottom: 6px; }
-  .feature h3 { font-size: 16px; font-weight: 700; }
-  .feature p { color: var(--muted); font-size: 14px; }
-  .feature.hit { border-color: var(--sky); box-shadow: 0 0 0 3px var(--sky-soft), var(--shadow); }
-  @media (max-width: 1000px) { .features { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 500px) { .features { grid-template-columns: 1fr; } }
-
-  /* Numbers band */
-  .band { background: var(--navy); color: var(--on-navy); }
-  .band .wrap { padding-block: 44px; display: grid; grid-template-columns: 1.1fr 2fr; gap: 28px; align-items: center; }
-  .band h2 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; }
-  .band p { color: var(--on-navy-muted); margin-top: 8px; font-size: 15px; }
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .stat b { display: block; font-size: 38px; font-weight: 800; line-height: 1.1; color: var(--on-navy); font-variant-numeric: tabular-nums; }
-  .stat span { color: var(--on-navy-muted); font-size: 14px; }
-  @media (max-width: 900px) { .band .wrap { grid-template-columns: 1fr; } }
-  @media (max-width: 560px) { .stats { grid-template-columns: 1fr 1fr; } }
-
-  /* Why */
-  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .why > div { display: flex; gap: 14px; padding: 20px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
-  .why .wicon { width: 46px; height: 46px; border-radius: 10px; display: grid; place-items: center; flex: none; color: var(--navy); }
-  .why h3 { font-size: 17px; font-weight: 800; }
-  .why p { color: var(--muted); font-size: 14px; margin-top: 3px; }
-  @media (max-width: 900px) { .why { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .why { grid-template-columns: 1fr; } }
-
-  /* Security */
-  .secure { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-  .secure h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; color: var(--navy); }
-  .secure h2 span { color: var(--sky); }
-  .secure > div > p { color: var(--muted); margin-top: 10px; font-size: 16px; }
-  .ticks { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
-  .ticks li { display: flex; gap: 10px; font-size: 15px; }
-  .ticks li .icon { color: var(--green); margin-top: 2px; }
-  .seals { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .seal { border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 6px; justify-items: start; background: var(--bg); }
-  .seal .sicon { width: 44px; height: 44px; border-radius: 50%; background: var(--tint); color: var(--navy); display: grid; place-items: center; }
-  .seal b { font-size: 16px; font-weight: 800; }
-  .seal span { color: var(--muted); font-size: 13px; }
-  @media (max-width: 860px) { .secure { grid-template-columns: 1fr; } }
-
-  /* Steps */
-  .steps { display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; counter-reset: s; position: relative; }
-  .step { display: grid; gap: 6px; align-content: start; }
-  .step::before { counter-increment: s; content: counter(s); width: 40px; height: 40px; border-radius: 50%; background: var(--sky); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 17px; margin-bottom: 6px; }
-  .step h3 { font-size: 17px; font-weight: 800; }
-  .step p { color: var(--muted); font-size: 14px; }
-  @media (max-width: 1100px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 460px) { .steps { grid-template-columns: 1fr; } }
-
-  /* Pricing */
-  .pricing { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; }
-  .plan { border: 2px solid var(--sky); border-radius: 12px; padding: 28px; display: grid; gap: 14px; background: var(--bg); box-shadow: var(--shadow); align-content: start; }
-  .plan .price { font-size: 46px; font-weight: 800; color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
-  .plan .price small { font-size: 16px; font-weight: 600; color: var(--muted); }
-  .plan ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
-  .plan li { display: flex; gap: 8px; font-size: 15px; }
-  .plan li .icon { color: var(--green); width: 18px; height: 18px; margin-top: 3px; }
-  .side { display: grid; gap: 14px; align-content: start; }
-  .side > div { border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; background: var(--bg); }
-  .side h3 { font-size: 16px; font-weight: 800; }
-  .side p { color: var(--muted); font-size: 14px; margin-top: 4px; }
-  @media (max-width: 860px) { .pricing { grid-template-columns: 1fr; } }
-  @media (max-width: 460px) { .plan ul { grid-template-columns: 1fr; } }
-
-  /* Team */
-  .team { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-  .member { flex: 0 1 calc((100% - 80px) / 5); min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); overflow: hidden; transition: box-shadow .2s, transform .2s; }
-  .member:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-  .photo { aspect-ratio: 3 / 4; max-width: 100%; background: linear-gradient(180deg, #f4f7fc, #e8eef8); display: grid; place-items: center; color: #8b93a7; overflow: hidden; }
-  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-  .photo .icon { width: 64px; height: 64px; }
-  .member-body { padding: 16px 18px 20px; display: grid; gap: 4px; align-content: start; }
-  .member h3 { font-size: 18px; font-weight: 800; }
-  .member .role { color: var(--sky); font-weight: 800; font-size: 14px; }
-  .member .qual { color: var(--ink); font-size: 13.5px; font-weight: 600; }
-  .member p { color: var(--muted); font-size: 14px; margin-top: 4px; }
-  @media (max-width: 1000px) { .member { flex-basis: calc((100% - 40px) / 3); } }
-  @media (max-width: 700px) { .member { flex-basis: calc((100% - 20px) / 2); } }
-  @media (max-width: 420px) { .member { flex-basis: 100%; } }
-
-  /* Testimonials + forms */
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-  .panel { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: grid; gap: 14px; min-width: 0; }
-  .panel h3 { font-size: 20px; font-weight: 800; }
-  .panel > p { color: var(--muted); font-size: 15px; }
-  .quote { display: grid; gap: 10px; }
-  .quote .qmark { font-size: 54px; line-height: .6; color: var(--sky); font-weight: 800; height: 26px; }
-  .quote p { font-size: 17px; }
-  .quote footer { color: var(--muted); font-size: 14px; }
-  .empty { border: 2px dashed var(--line); border-radius: 10px; padding: 26px; text-align: center; color: var(--muted); display: grid; gap: 6px; }
-  .empty b { color: var(--ink); font-size: 16px; }
-  label { font-weight: 700; font-size: 14px; display: grid; gap: 6px; }
-  .field { font: 400 16px var(--font); padding: 11px 12px; border: 1px solid #ccd3e0; border-radius: 6px; background: var(--bg); color: var(--ink); width: 100%; }
-  .field:focus { border-color: var(--sky); outline: 2px solid var(--sky-soft); }
-  textarea.field { min-height: 100px; resize: vertical; }
-  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .stars { display: flex; gap: 4px; }
-  .stars button { font-size: 28px; line-height: 1; background: none; border: none; cursor: pointer; color: #d5dae4; padding: 0 2px; }
-  .stars button.on { color: var(--amber); }
-  .note { font-size: 13px; color: var(--muted); }
-  .err { color: #c0392b; font-size: 14px; min-height: 1em; }
-  .err.ok { color: var(--ink); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-  @media (max-width: 860px) { .two, .row2 { grid-template-columns: 1fr; } }
-
-  /* Get the demo */
-  .getapp { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .mock { position: relative; padding: 0 40px 30px 0; min-width: 0; }
-  .laptop { background: #1d2333; border-radius: 12px 12px 0 0; padding: 10px 10px 0; box-shadow: var(--shadow); }
-  .laptop img { border-radius: 4px 4px 0 0; }
-  .laptop-base { height: 14px; background: #c9cfdb; border-radius: 0 0 14px 14px; margin: 0 -18px; }
-  .phone { position: absolute; right: 0; bottom: 0; width: 30%; background: #1d2333; border-radius: 18px; padding: 7px; box-shadow: 0 14px 30px rgba(0,0,0,.28); }
-  .phone img { border-radius: 12px; }
-  .getapp h2 { font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; color: var(--ink); }
-  .getapp .sub { color: var(--muted); margin-top: 10px; font-size: 16px; }
-  .logins { margin-top: 18px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-  .logins div { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; flex-wrap: wrap; }
-  .logins div + div { border-top: 1px solid var(--line); }
-  .logins span { color: var(--muted); font-size: 14px; }
-  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 14px; background: var(--tint); color: var(--navy); padding: 3px 9px; border-radius: 5px; font-weight: 600; }
-  .demo-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-  .sendlink { margin-top: 26px; display: grid; gap: 8px; }
-  .sendlink b { font-size: 15px; }
-  .phone-row { display: flex; max-width: 460px; border: 1px solid #ccd3e0; border-radius: 6px; overflow: hidden; }
-  .phone-row select, .phone-row input { border: none; font: 600 16px var(--font); padding: 0 12px; height: 46px; background: var(--bg); color: var(--ink); min-width: 0; }
-  .phone-row select { border-right: 1px solid #ccd3e0; flex: none; }
-  .phone-row input { flex: 1; outline: none; }
-  .phone-row .btn { border-radius: 0; height: 46px; }
-  .pending { color: var(--muted); font-size: 14px; }
-  @media (max-width: 900px) { .getapp { grid-template-columns: 1fr; } .mock { order: 2; } }
-  @media (max-width: 420px) { .phone-row .btn { padding-inline: 12px; } }
-
-  /* FAQ */
-  .faq { display: grid; gap: 10px; }
-  details { border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; background: var(--bg); }
-  summary { font-weight: 700; cursor: pointer; font-size: 16px; }
-  details p { color: var(--muted); margin-top: 8px; font-size: 15px; }
-  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; align-items: start; }
-  @media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
-
-  /* Contact */
-  .contact-list { display: grid; gap: 14px; }
-  .citem { display: flex; gap: 12px; align-items: flex-start; }
-  .citem .cicon { width: 40px; height: 40px; border-radius: 50%; background: var(--sky-soft); color: #0c7fa6; display: grid; place-items: center; flex: none; }
-  .citem b { display: block; font-size: 15px; }
-  .citem span { color: var(--muted); overflow-wrap: anywhere; font-size: 15px; }
-  .copy { margin-left: 6px; font: 700 12px var(--font); color: var(--sky); background: none; border: 1px solid var(--line); border-radius: 5px; padding: 2px 8px; cursor: pointer; }
-
-  /* Footer */
-  footer.site { background: var(--navy-2); color: var(--on-navy); }
-  footer.site .cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; padding-block: 48px 32px; }
-  footer.site h4 { font-size: 16px; font-weight: 800; margin-bottom: 14px; }
-  footer.site ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
-  footer.site li, footer.site a, footer.site dd, footer.site dt { color: var(--on-navy-muted); font-size: 14px; }
-  footer.site a:hover { color: var(--on-navy); }
-  footer.site dl { margin: 0; display: grid; gap: 2px; }
-  footer.site dt { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; opacity: .8; margin-top: 8px; }
-  footer.site dt:first-child { margin-top: 0; }
-  footer.site dd { margin: 0; color: var(--on-navy); }
-  .foot-base { border-top: 1px solid rgba(255,255,255,.14); padding-block: 22px 26px; display: grid; justify-items: center; gap: 10px; text-align: center; }
-  .foot-base .logo { color: var(--on-navy); }
-  .foot-base p { color: var(--on-navy-muted); font-size: 13px; }
-  @media (max-width: 960px) { footer.site .cols { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 600px) { footer.site .cols { grid-template-columns: 1fr 1fr; } }
-</style>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
@@ -394,21 +57,19 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Home"><span class="logo-mark"><svg class="icon"><use href="#i-clinic"/></svg></span><span data-brand-split>Upchar SoftDesk</span></a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg class="icon"><use href="#i-menu"/></svg></button>
+    <a class="logo" href="/" aria-label="Home"><span class="logo-mark"><svg class="icon"><use href="#i-clinic"/></svg></span><span data-brand-split>Upchar SoftDesk</span></a>
     <nav class="menu" id="menu" aria-label="Main">
-      <a href="#for">Solutions</a>
-      <a href="#features">Features</a>
-      <a href="#screens">Screens</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#team">About us</a>
-      <a href="#contact">Contact</a>
+      <a href="/" class="active" aria-current="page">Home</a>
+      <a href="/features/">Features</a>
+      <a href="/tour/">Video tour</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/about/">About us</a>
     </nav>
     <div class="top-right">
-      <a class="plain" href="#security">Security &amp; privacy</a>
-      <a class="btn btn-line" href="#demo">Try live demo</a>
-      <a class="btn btn-sky" href="#contact">Book free demo</a>
+      <a class="btn btn-line" href="/demo/"><svg class="icon"><use href="#i-play"/></svg><span class="long">Live </span>Demo</a>
+      <a class="btn btn-sky" href="/contact/"><svg class="icon"><use href="#i-chat"/></svg>Contact<span class="long"> Us</span></a>
     </div>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg class="icon"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
@@ -418,6 +79,10 @@
       <p class="kicker">Medisoft Manager · Made in collaboration with doctors · Lucknow based</p>
       <h1 id="hero-title">Your hospital, run from <span>one simple screen</span></h1>
       <p class="lead">OPD slips, billing, beds, discharge and daily collection. Set up for you, works on any computer or phone, at a price small hospitals can afford.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-sky btn-lg" href="/demo/"><svg class="icon"><use href="#i-play"/></svg>Try the live demo</a>
+        <a class="btn btn-ghost btn-lg" href="/contact/"><svg class="icon"><use href="#i-chat"/></svg>Contact us</a>
+      </div>
       <form class="search" id="searchForm" role="search" aria-label="Find a feature">
         <label for="qType"><svg class="icon"><use href="#i-hospital"/></svg>
           <select id="qType" aria-label="I run a">
@@ -454,20 +119,20 @@
 
   <section class="section" style="padding-bottom:24px" aria-label="Start here">
     <div class="wrap tiles">
-      <a class="tile" href="#demo">
-        <div class="tile-pic" style="background:var(--t1)"><img src="img/02-dashboard.webp" alt="" width="1600" height="1054"></div>
+      <a class="tile" href="/demo/">
+        <div class="tile-pic" style="background:var(--t1)"><img src="/img/02-dashboard.webp" alt="" width="1600" height="1054"></div>
         <div class="tile-body"><h3>Live demo</h3><p>Click around yourself in a minute</p></div>
       </a>
-      <a class="tile" href="#for">
-        <div class="tile-pic" style="background:var(--t2)"><img src="img/08-ipd.webp" alt="" width="1600" height="1054"></div>
+      <a class="tile" href="/features/#for">
+        <div class="tile-pic" style="background:var(--t2)"><img src="/img/08-ipd.webp" alt="" width="1600" height="1054"></div>
         <div class="tile-body"><h3>For hospitals <span class="badge live">Live</span></h3><p>From reception to discharge</p></div>
       </a>
-      <a class="tile" href="#for">
+      <a class="tile" href="/features/#for">
         <div class="tile-pic" style="background:var(--t3)"><svg class="big"><use href="#i-tooth"/></svg></div>
         <div class="tile-body"><h3>For dental clinics <span class="badge pilot">Pilot</span></h3><p>Dental edition, now with our first clinic</p></div>
       </a>
-      <a class="tile" id="tourTile" href="#screens" target="_blank" rel="noopener">
-        <div class="tile-pic" style="background:var(--t4)"><img src="img/06-billing.webp" alt="" width="1600" height="1054"></div>
+      <a class="tile" id="tourTile" href="/tour/">
+        <div class="tile-pic" style="background:var(--t4)"><img src="/img/06-billing.webp" alt="" width="1600" height="1054"></div>
         <div class="tile-body"><h3>Video tour</h3><p>Watch the software at work, step by step</p></div>
       </a>
     </div>
@@ -477,61 +142,18 @@
     <div class="wrap">
       <div class="head">
         <div><h2 id="dept-title">Run every department from one place</h2><p>Each counter of your hospital gets its own simple screen. Tap one to see what it does.</p></div>
-        <a class="btn btn-line" href="#features">View all features</a>
+        <a class="btn btn-line" href="/features/">View all features</a>
       </div>
       <div class="rounds">
-        <a class="round" href="#features" data-find="registration"><span class="disc" style="background:var(--t1)"><svg class="icon"><use href="#i-id"/></svg></span><b>Reception &amp; OPD</b><span class="link-caps">See how</span></a>
-        <a class="round" href="#features" data-find="slip"><span class="disc" style="background:var(--t2)"><svg class="icon"><use href="#i-qr"/></svg></span><b>Prescription slip</b><span class="link-caps">See how</span></a>
-        <a class="round" href="#features" data-find="billing"><span class="disc" style="background:var(--t3)"><svg class="icon"><use href="#i-card"/></svg></span><b>Billing counter</b><span class="link-caps">See how</span></a>
-        <a class="round" href="#features" data-find="tests"><span class="disc" style="background:var(--t4)"><svg class="icon"><use href="#i-flask"/></svg></span><b>Lab tests</b><span class="link-caps">See how</span></a>
-        <a class="round" href="#features" data-find="beds"><span class="disc" style="background:var(--t5)"><svg class="icon"><use href="#i-bed"/></svg></span><b>Beds &amp; IPD</b><span class="link-caps">See how</span></a>
-        <a class="round" href="#features" data-find="discharge"><span class="disc" style="background:var(--t6)"><svg class="icon"><use href="#i-file"/></svg></span><b>Discharge</b><span class="link-caps">See how</span></a>
-        <a class="round" href="#features" data-find="reports"><span class="disc" style="background:var(--t1)"><svg class="icon"><use href="#i-chart"/></svg></span><b>Owner's reports</b><span class="link-caps">See how</span></a>
-        <a class="round" href="#features" data-find="staff"><span class="disc" style="background:var(--t2)"><svg class="icon"><use href="#i-users"/></svg></span><b>Staff &amp; salaries</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=registration#features"><span class="disc" style="background:var(--t1)"><svg class="icon"><use href="#i-id"/></svg></span><b>Reception &amp; OPD</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=slip#features"><span class="disc" style="background:var(--t2)"><svg class="icon"><use href="#i-qr"/></svg></span><b>Prescription slip</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=billing#features"><span class="disc" style="background:var(--t3)"><svg class="icon"><use href="#i-card"/></svg></span><b>Billing counter</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=tests#features"><span class="disc" style="background:var(--t4)"><svg class="icon"><use href="#i-flask"/></svg></span><b>Lab tests</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=beds#features"><span class="disc" style="background:var(--t5)"><svg class="icon"><use href="#i-bed"/></svg></span><b>Beds &amp; IPD</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=discharge#features"><span class="disc" style="background:var(--t6)"><svg class="icon"><use href="#i-file"/></svg></span><b>Discharge</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=reports#features"><span class="disc" style="background:var(--t1)"><svg class="icon"><use href="#i-chart"/></svg></span><b>Owner's reports</b><span class="link-caps">See how</span></a>
+        <a class="round" href="/features/?q=staff#features"><span class="disc" style="background:var(--t2)"><svg class="icon"><use href="#i-users"/></svg></span><b>Staff &amp; salaries</b><span class="link-caps">See how</span></a>
       </div>
-    </div>
-  </section>
-
-  <section class="section tinted" id="for" aria-labelledby="for-title">
-    <div class="wrap">
-      <div class="head">
-        <div><h2 id="for-title">Made for every kind of healthcare</h2><p>Every customer gets their own copy with their name, logo, doctors, prices and beds.</p></div>
-      </div>
-      <div class="carousel">
-        <button class="arrow prev" type="button" id="prevBtn" aria-label="Previous"><svg class="icon"><use href="#i-left"/></svg></button>
-        <div class="track" id="track">
-          <article class="card"><div class="card-pic" style="background:var(--t1)"><span class="badge live">Live</span><svg class="icon"><use href="#i-hospital"/></svg></div><div class="card-body"><h3>Hospitals</h3><p>Busy OPD? Slips in seconds, beds and the final bill worked out for you.</p></div></article>
-          <article class="card"><div class="card-pic" style="background:var(--t5)"><span class="badge live">Live</span><svg class="icon"><use href="#i-baby"/></svg></div><div class="card-body"><h3>Nursing &amp; maternity homes</h3><p>Admissions, advances, operation schedule and discharge summary.</p></div></article>
-          <article class="card"><div class="card-pic" style="background:var(--t2)"><span class="badge live">Live</span><svg class="icon"><use href="#i-users"/></svg></div><div class="card-body"><h3>Multi-speciality clinics</h3><p>Many doctors, each with their own fees, and doctor-wise revenue.</p></div></article>
-          <article class="card"><div class="card-pic" style="background:var(--t3)"><span class="badge pilot">Pilot</span><svg class="icon"><use href="#i-tooth"/></svg></div><div class="card-body"><h3>Dental clinics</h3><p>Visit history, treatment charges and bills, built on the same system.</p></div></article>
-          <article class="card"><div class="card-pic" style="background:var(--t6)"><span class="badge live">Live</span><svg class="icon"><use href="#i-steth"/></svg></div><div class="card-body"><h3>Single-doctor clinics</h3><p>Registration, slip with QR code, tests from your price list.</p></div></article>
-          <article class="card"><div class="card-pic" style="background:var(--t4)"><svg class="icon"><use href="#i-chat"/></svg></div><div class="card-body"><h3>Diagnostic centres</h3><p>Test registration, billing and reports. <a href="#contact">Tell us what your centre needs.</a></p></div></article>
-        </div>
-        <button class="arrow next" type="button" id="nextBtn" aria-label="Next"><svg class="icon"><use href="#i-right"/></svg></button>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="screens" aria-labelledby="screens-title">
-    <div class="wrap">
-      <div class="head">
-        <div><h2 id="screens-title">See the real screens</h2><p>Taken from the demo system. Every patient name and amount is made up. Tap a picture to enlarge it.</p></div>
-        <a class="btn btn-line" href="#demo">Try it yourself</a>
-      </div>
-      <div class="screens" id="screenCards"></div>
-    </div>
-  </section>
-  <dialog class="viewer" id="viewer" aria-labelledby="viewerTitle">
-    <div class="viewer-bar"><span id="viewerTitle"></span><button type="button" id="viewerClose">Close</button></div>
-    <img id="viewerImg" alt="">
-  </dialog>
-
-  <section class="section tinted" id="features" aria-labelledby="features-title">
-    <div class="wrap">
-      <div class="head">
-        <div><h2 id="features-title">All features, in every plan</h2><p>No extra modules to buy. Your staff learn it in an afternoon.</p></div>
-      </div>
-      <div class="features" id="featureGrid"></div>
     </div>
   </section>
 
@@ -556,187 +178,24 @@
     </div>
   </section>
 
-  <section class="section tinted" id="security" aria-labelledby="security-title">
-    <div class="wrap secure">
-      <div>
-        <h2 id="security-title">Your patients' data has one owner. <span>Your hospital.</span></h2>
-        <p>These are the actual controls built into the software.</p>
-        <ul class="ticks">
-          <li><svg class="icon"><use href="#i-check"/></svg>Each hospital has its own separate database</li>
-          <li><svg class="icon"><use href="#i-check"/></svg>Separate logins: reception never sees revenue</li>
-          <li><svg class="icon"><use href="#i-check"/></svg>Five wrong passwords lock the account for five minutes</li>
-          <li><svg class="icon"><use href="#i-check"/></svg>Bill corrections and refunds need a reason and stay on record</li>
-          <li><svg class="icon"><use href="#i-check"/></svg>The slip's QR code holds a scrambled code, never patient details</li>
-          <li><svg class="icon"><use href="#i-check"/></svg>Download a full copy of your data at any time</li>
-        </ul>
-      </div>
-      <div class="seals">
-        <div class="seal"><span class="sicon"><svg class="icon"><use href="#i-lock"/></svg></span><b>HTTPS only</b><span>Every page travels encrypted</span></div>
-        <div class="seal"><span class="sicon"><svg class="icon"><use href="#i-db"/></svg></span><b>AES-256 backups</b><span>Encrypted every night, kept 30 days</span></div>
-        <div class="seal"><span class="sicon"><svg class="icon"><use href="#i-shield"/></svg></span><b>OWASP Top 10</b><span>Checked against every item</span></div>
-        <div class="seal"><span class="sicon"><svg class="icon"><use href="#i-id"/></svg></span><b>ABDM ready</b><span>ABHA, consent, HFR and HPR IDs</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="steps-title">
+  <section class="cta-band" aria-labelledby="cta-title">
     <div class="wrap">
-      <div class="head"><div><h2 id="steps-title">How we work</h2><p>Simple steps, about three weeks from your first call to the software running at your clinic or hospital.</p></div></div>
-      <div class="steps">
-        <div class="step"><h3>Tell us your needs</h3><p>In writing, and in a discussion on call.</p></div>
-        <div class="step"><h3>We prepare it</h3><p>One week of work-up on your requirements.</p></div>
-        <div class="step"><h3>We discuss it with you</h3><p>On call, video call or Zoom.</p></div>
-        <div class="step"><h3>We refine it</h3><p>A second week of work-up.</p></div>
-        <div class="step"><h3>Your corrections</h3><p>One week in total for the changes you ask for.</p></div>
-        <div class="step"><h3>Installation and demo</h3><p>Set up at your place and shown to your staff.</p></div>
-        <div class="step"><h3>Purchase</h3><p>You buy only once you are happy with it.</p></div>
+      <div><h2 id="cta-title">See it working in two minutes</h2><p>Watch the short video tour, or open the live demo and click around yourself.</p></div>
+      <div class="cta-actions">
+        <a class="btn btn-white btn-lg" href="/tour/"><svg class="icon"><use href="#i-play"/></svg>Watch the video tour</a>
+        <a class="btn btn-sky btn-lg" href="/demo/">Try the live demo</a>
+        <a class="btn btn-ghost btn-lg" href="/contact/">Contact us</a>
       </div>
-    </div>
-  </section>
-
-  <section class="section tinted" id="pricing" aria-labelledby="pricing-title">
-    <div class="wrap">
-      <div class="head"><div><h2 id="pricing-title">One simple monthly price</h2><p>No server to buy, nothing to install, no lock-in.</p></div></div>
-      <div class="pricing">
-        <div class="plan">
-          <h3 style="font-size:19px;font-weight:800">Hospital plan</h3>
-          <div class="price" id="price">₹1,200 <small>per month</small></div>
-          <ul>
-            <li><svg class="icon"><use href="#i-check"/></svg>Every feature on this page</li>
-            <li><svg class="icon"><use href="#i-check"/></svg>Unlimited patients and bills</li>
-            <li><svg class="icon"><use href="#i-check"/></svg>A login for each staff member</li>
-            <li><svg class="icon"><use href="#i-check"/></svg>Your own secure database</li>
-            <li><svg class="icon"><use href="#i-check"/></svg>Nightly encrypted backups</li>
-            <li><svg class="icon"><use href="#i-check"/></svg>All updates included</li>
-            <li><svg class="icon"><use href="#i-check"/></svg>Support on WhatsApp and phone</li>
-            <li><svg class="icon"><use href="#i-check"/></svg>Your name and logo on every slip</li>
-          </ul>
-          <a class="btn btn-sky" style="justify-self:start" data-whatsapp="Hello, I would like to know more about the Hospital plan." href="#contact">Ask about this plan</a>
-        </div>
-        <div class="side">
-          <div><h3>Dental clinics &amp; small clinics</h3><p>A lighter plan for OPD-only practices. Ask us for the price.</p></div>
-          <div><h3>Setup &amp; training</h3><p>We enter your doctors, prices and beds and train your staff. Ask us about setup.</p></div>
-          <div><h3>No lock-in</h3><p>Pay monthly. If you ever leave, we hand you a full copy of your data.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="demo" aria-labelledby="demo-title">
-    <div class="wrap getapp">
-      <div class="mock" aria-hidden="true">
-        <div class="laptop"><img src="img/02-dashboard.webp" alt="" width="1600" height="1054"></div>
-        <div class="laptop-base"></div>
-        <div class="phone"><img src="img/18-phone.webp" alt=""></div>
-      </div>
-      <div>
-        <h2 id="demo-title">Try the live demo</h2>
-        <p class="sub">Log in as reception or as the owner and click around: register a patient, make a bill, admit someone. Every patient is made up and the demo starts fresh again, so nothing you do can break it.</p>
-        <div class="logins" aria-label="Demo logins">
-          <div><span>Reception (Staff Login)</span><code>demo-staff</code></div>
-          <div><span>Owner (Owner Login)</span><code>demo-owner</code></div>
-          <div><span>Password for both</span><code>Demo@2026</code></div>
-        </div>
-        <div class="demo-actions">
-          <a class="btn btn-sky" id="demoLink" href="#demo" target="_blank" rel="noopener"><svg class="icon"><use href="#i-play"/></svg>Open the live demo</a>
-          <a class="btn btn-line" id="tourLink" href="#screens" target="_blank" rel="noopener">Video tour</a>
-        </div>
-        <p class="pending" id="demoPending" hidden style="margin-top:10px">The live demo link is being set up. Get it on WhatsApp below.</p>
-        <form class="sendlink" id="linkForm" novalidate>
-          <b>Get the demo link on WhatsApp</b>
-          <div class="phone-row">
-            <select id="lCode" aria-label="Country code"><option>+91</option></select>
-            <input id="lPhone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="Enter mobile number" aria-label="Mobile number">
-            <button class="btn btn-sky" type="submit">Send</button>
-          </div>
-          <div class="err" id="lError" role="alert"></div>
-        </form>
-        <p class="pending">The first visit after a quiet spell can take up to a minute to open.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section tinted" id="team" aria-labelledby="team-title">
-    <div class="wrap">
-      <div class="head"><div><h2 id="team-title">Meet the team behind <span data-brand>Upchar SoftDesk</span></h2><p>Developers and service providers of software for all kinds of clinics, dental clinics, nursing homes, hospitals and diagnostic centres. Made in collaboration with doctors. Lucknow based.</p></div></div>
-      <div class="team" id="teamList"></div>
-    </div>
-  </section>
-
-  <section class="section" id="feedback" aria-labelledby="feedback-title">
-    <div class="wrap">
-      <div class="head"><div><h2 id="feedback-title">What doctors have to say</h2><p>Real feedback from the doctors and hospitals who use it.</p></div></div>
-      <div class="two">
-        <div class="panel" id="reviews"></div>
-        <form class="panel" id="feedbackForm" novalidate>
-          <h3>Share your feedback</h3>
-          <p>Tried the demo or already using it? Your message opens in WhatsApp, ready to send to us.</p>
-          <div class="row2">
-            <label for="fbName">Your name<input class="field" id="fbName" autocomplete="name" required></label>
-            <label for="fbPlace">Hospital or clinic<input class="field" id="fbPlace" autocomplete="organization"></label>
-          </div>
-          <div>
-            <span style="font-weight:700;font-size:14px" id="ratingLabel">Rating</span>
-            <div class="stars" role="radiogroup" aria-labelledby="ratingLabel" id="stars"></div>
-          </div>
-          <label for="fbText">Your feedback<textarea class="field" id="fbText" required></textarea></label>
-          <div class="err" id="fbError" role="alert"></div>
-          <button class="btn btn-sky" type="submit" style="justify-self:start"><svg class="icon"><use href="#i-chat"/></svg>Send feedback on WhatsApp</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="section tinted" aria-labelledby="faq-title">
-    <div class="wrap">
-      <div class="head"><div><h2 id="faq-title">Questions doctors ask us</h2></div></div>
-      <div class="faq-grid">
-        <div class="faq">
-          <details><summary>Do we need to install anything or buy a server?</summary><p>No. It opens in the browser on any computer, tablet or phone. We run the servers, backups and updates.</p></details>
-          <details><summary>Who can see our patients' data?</summary><p>Only the logins you create. Each hospital has its own separate database, and staff logins cannot see revenue or the owner's panel.</p></details>
-          <details><summary>What happens if the internet goes down?</summary><p>The system needs internet, but very little: a mobile hotspot is enough. Nothing is lost, because every saved entry is already on the server.</p></details>
-        </div>
-        <div class="faq">
-          <details><summary>Can we change our prices and beds ourselves?</summary><p>Yes. The owner can edit the whole price list and the beds at any time, confirming each change with their password.</p></details>
-          <details><summary>Is it ready for ABDM and ABHA?</summary><p>It records patients' ABHA numbers and consent, and prints your HFR facility ID and each doctor's registration and HPR ID on slips and bills.</p></details>
-          <details><summary>What if we want to stop using it?</summary><p>You pay monthly with no lock-in. We give you a complete copy of all your data.</p></details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact" aria-labelledby="contact-title">
-    <div class="wrap two">
-      <div class="panel">
-        <h3 id="contact-title">Book a free demo at your hospital</h3>
-        <p>Call or message us. We'll show you the system on your own phone and answer every question.</p>
-        <div class="contact-list" id="contactList"></div>
-      </div>
-      <form class="panel" id="contactForm" novalidate>
-        <h3>Request a call back</h3>
-        <div class="row2">
-          <label for="cName">Your name<input class="field" id="cName" autocomplete="name" required></label>
-          <label for="cPhone">Mobile number<input class="field" id="cPhone" type="tel" inputmode="numeric" autocomplete="tel" required></label>
-        </div>
-        <div class="row2">
-          <label for="cPlace">Hospital or clinic<input class="field" id="cPlace" autocomplete="organization"></label>
-          <label for="cType">Type<select class="field" id="cType"><option>Hospital</option><option>Nursing home</option><option>Dental clinic</option><option>Clinic / polyclinic</option><option>Other</option></select></label>
-        </div>
-        <label for="cMsg">Message (optional)<textarea class="field" id="cMsg" style="min-height:80px"></textarea></label>
-        <div class="err" id="cError" role="alert"></div>
-        <button class="btn btn-sky" type="submit" style="justify-self:start"><svg class="icon"><use href="#i-chat"/></svg>Send on WhatsApp</button>
-        <p class="note">Opens WhatsApp with your details filled in. Nothing is stored on this page.</p>
-      </form>
     </div>
   </section>
 </main>
 
 <footer class="site">
   <div class="wrap cols">
-    <div><h4 data-brand>Upchar SoftDesk</h4><ul><li><a href="#team">About us</a></li><li><a href="#feedback">Feedback</a></li><li><a href="#contact">Contact us</a></li><li><a href="#security">Security &amp; privacy</a></li></ul></div>
-    <div><h4>For hospitals</h4><ul><li><a href="#features">OPD &amp; billing</a></li><li><a href="#features">Beds &amp; IPD</a></li><li><a href="#features">Discharge bill</a></li><li><a href="#features">Reports</a></li></ul></div>
-    <div><h4>For clinics</h4><ul><li><a href="#for">Dental clinics</a></li><li><a href="#for">Multi-speciality</a></li><li><a href="#for">Single-doctor</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
-    <div><h4>Try it</h4><ul><li><a href="#demo">Live demo</a></li><li><a href="#screens">Screens</a></li><li><a href="#contact">Book free demo</a></li><li><a href="#features">All features</a></li></ul></div>
+    <div><h4 data-brand>Upchar SoftDesk</h4><ul><li><a href="/about/">About us</a></li><li><a href="/about/#feedback">Feedback</a></li><li><a href="/contact/">Contact us</a></li><li><a href="/features/#security">Security &amp; privacy</a></li></ul></div>
+    <div><h4>For hospitals</h4><ul><li><a href="/features/#features">OPD &amp; billing</a></li><li><a href="/features/#features">Beds &amp; IPD</a></li><li><a href="/features/#features">Discharge bill</a></li><li><a href="/features/#features">Reports</a></li></ul></div>
+    <div><h4>For clinics</h4><ul><li><a href="/features/#for">Dental clinics</a></li><li><a href="/features/#for">Multi-speciality</a></li><li><a href="/features/#for">Single-doctor</a></li><li><a href="/pricing/">Pricing</a></li></ul></div>
+    <div><h4>Try it</h4><ul><li><a href="/demo/">Live demo</a></li><li><a href="/features/#screens">Screens</a></li><li><a href="/contact/">Book free demo</a></li><li><a href="/features/#features">All features</a></li></ul></div>
     <div><h4>Company</h4><dl id="companyDetails"></dl></div>
   </div>
   <div class="wrap foot-base">
@@ -745,226 +204,6 @@
   </div>
 </footer>
 
-<script>
-/* ======================================================================
-   EDIT HERE: everything that changes once the company is registered.
-   Leave a value empty ("") until you have the real one; the page then
-   shows "registration in progress" or hides it, and never invents details.
-   ====================================================================== */
-const CONFIG = {
-  brand: "Upchar SoftDesk",            // the company / product name
-  whatsapp: "919362414164",            // WhatsApp number with country code, digits only, e.g. "919XXXXXXXXX"
-  phone: "",                           // e.g. "+91 9XXXX XXXXX"
-  email: "",                           // e.g. "hello@yourdomain.in"
-  city: "Lucknow, Uttar Pradesh",
-  demoUrl: "/demo/",                    // opens /demo, which forwards to the live demo (address set in demo/index.html)
-  tourUrl: "/tour/",
-  price: "₹1,200",
-  company: {                           // from your registration certificate
-    legalName: "",                     // e.g. "XYZ Healthtech Private Limited"
-    type: "",                          // e.g. "Private Limited Company" or "Proprietorship (Udyam registered)"
-    cin: "",                           // Corporate Identification Number (Pvt Ltd only)
-    udyam: "",                         // Udyam registration number
-    gstin: "",
-    address: ""                        // registered office address
-  },
-  numbers: [                           // only numbers you can prove
-    { value: "1", label: "hospital live, in daily use" },
-    { value: "2", label: "editions: hospital and dental" },
-    { value: "672", label: "automatic checks before every update" },
-    { value: "100", label: "Google Lighthouse speed score" }
-  ],
-  team: [                              // photo: a file published with the page ("img/...") or a web address ("https://...")
-    { name: "Sushant Tiwari", role: "Founder & Owner", qual: "", about: "Builds the software and works with every hospital we set up.", photo: "img/team-sushant.webp" },
-    { name: "P.C. Tiwari", role: "Co-founder", qual: "", about: "Guides the company's direction and its work with hospitals.", photo: "img/team-pc.webp" },
-    { name: "Shivam Tripathi", role: "Finance Director", qual: "", about: "Looks after the company's finances, plans and billing.", photo: "img/team-shivam.webp" },
-    { name: "Dr. Punit Tiwari", role: "Medical Advisor", qual: "MBBS \u00b7 Orthopaedic resident", about: "Brings a doctor's view of the OPD and the wards to the software.", photo: "img/team-punit.webp" },
-    { name: "Aradhana Tiwari", role: "Research & Quality Lead", qual: "B.Sc, M.Sc (Chemistry) \u00b7 PhD ongoing", about: "Checks every feature carefully before it reaches a hospital.", photo: "img/team-aradhana.webp" }
-  ],
-  reviews: [                           // only real feedback, with the doctor's permission
-    // { name: "Dr. ...", place: "... Hospital, ...", text: "...", stars: 5 }
-  ]
-};
-
-const SCREENS = [
-  { cat: "Reception", title: "Register a patient in about a minute", text: "Pick the doctor and the fee fills itself in. Returning patients are found by mobile number.", img: "img/03-opd-new.webp" },
-  { cat: "Prescription slip", title: "A clean slip, printed or on WhatsApp", text: "Your logo, the doctor's details and OPD hours, with a private QR code.", img: "img/04-opd-slip.webp" },
-  { cat: "Billing", title: "Bill tests with one click", text: "Quick buttons for common tests, your own price list, and cash, UPI or card.", img: "img/06-billing.webp" },
-  { cat: "Beds & IPD", title: "Every bed at a glance", text: "Live occupancy by ward, advances, operation schedule and bed changes.", img: "img/08-ipd.webp" },
-  { cat: "Discharge", title: "The final bill, worked out for you", text: "Bed days, doctor fees and tests, minus advances, with the balance shown.", img: "img/10-ipd-bill.webp" },
-  { cat: "Owner's reports", title: "Know your collection without asking", text: "Cash, UPI and card, by OPD, tests and IPD, for any day, week or month.", img: "img/12b-collection.webp" }
-];
-
-const FEATURES = [
-  { icon: "i-id", title: "OPD registration", text: "New, follow-up and emergency visits. Choosing the doctor fills in the department and fee.", keys: "opd registration reception register patient new followup emergency visit" },
-  { icon: "i-qr", title: "Slips with QR code", text: "Print or WhatsApp the slip. Scan its QR at the desk to open the patient's record.", keys: "slip prescription qr print whatsapp opd slip" },
-  { icon: "i-card", title: "Billing in seconds", text: "One-click buttons for common tests, your own price list, and cash, UPI or card, even split.", keys: "billing bill payment cash upi card counter invoice" },
-  { icon: "i-flask", title: "Tests & procedures", text: "Investigations, procedures and services from your price list, on the patient's bill.", keys: "tests lab investigation procedure pathology xray price list" },
-  { icon: "i-bed", title: "Beds & admissions", text: "Live occupancy by ward. Bed charges are counted by the day automatically.", keys: "beds bed management ipd admission admit ward occupancy ot operation" },
-  { icon: "i-file", title: "Discharge & final bill", text: "Advances, charges and discount in one bill, plus a printed discharge summary.", keys: "discharge final bill summary advance discount ipd bill" },
-  { icon: "i-chart", title: "Collection reports", text: "Daily OPD, doctor revenue, bed occupancy and collection by payment mode.", keys: "reports collection daily revenue owner accounts income" },
-  { icon: "i-users", title: "Staff & salaries", text: "Doctors with fees and registration details, employees and monthly salary tracking.", keys: "staff salaries salary employees doctors payroll" },
-  { icon: "i-lock", title: "A login for each person", text: "Reception never sees revenue. Switch off a login the day someone leaves.", keys: "login logins password users roles access staff login security" },
-  { icon: "i-shield", title: "ABHA & ABDM ready", text: "Records ABHA and patient consent, and prints your HFR and doctors' HPR IDs.", keys: "abha abdm hfr hpr consent government ayushman" },
-  { icon: "i-rupee", title: "Change your own prices", text: "The owner edits the price list and beds, confirmed with their password.", keys: "prices price list rates edit change fees" },
-  { icon: "i-db", title: "Your data, always", text: "Nightly encrypted backup, and download a full copy of your data any time.", keys: "backup data download export copy" }
-];
-
-const esc = value => String(value).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const waLink = text => CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}` : null;
-const $ = id => document.getElementById(id);
-
-// Brand name everywhere; the header logo shows the second half in blue
-for (const el of document.querySelectorAll("[data-brand]")) el.textContent = CONFIG.brand;
-// Logo: first word in dark, the rest in blue ("Upchar SoftDesk"); one-word names split at the last capital
-const split = CONFIG.brand.includes(" ") ? CONFIG.brand.match(/^(\S+ )(.+)$/) : CONFIG.brand.match(/^(.+?)([A-Z][a-z]+)$/);
-document.querySelector("[data-brand-split]").innerHTML = split ? `${esc(split[1])}<b>${esc(split[2])}</b>` : esc(CONFIG.brand);
-$("year").textContent = new Date().getFullYear();
-
-for (const el of document.querySelectorAll("[data-whatsapp]")) {
-  const link = waLink(el.dataset.whatsapp);
-  if (link) { el.href = link; el.target = "_blank"; el.rel = "noopener"; }
-}
-
-// Mobile menu
-const menuBtn = $("menuBtn"), menu = $("menu");
-menuBtn.addEventListener("click", () => menuBtn.setAttribute("aria-expanded", String(menu.classList.toggle("open"))));
-menu.addEventListener("click", e => { if (e.target.tagName === "A") { menu.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); } });
-
-// Features
-$("featureGrid").innerHTML = FEATURES.map((f, i) => `<div class="feature" data-i="${i}"><span class="ficon"><svg class="icon"><use href="#${f.icon}"/></svg></span><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p></div>`).join("");
-const featureEls = [...document.querySelectorAll(".feature")];
-
-function findFeatures(query) {
-  const words = query.toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 1);
-  if (!words.length) return [];
-  return FEATURES.map((f, i) => ({ i, score: words.filter(w => (f.keys + " " + f.title.toLowerCase()).includes(w)).length })).filter(r => r.score).sort((a, b) => b.score - a.score);
-}
-let hitTimer;
-function showFeatures(query) {
-  const hits = findFeatures(query);
-  featureEls.forEach(el => el.classList.remove("hit"));
-  if (!hits.length) return false;
-  const best = hits[0].score;
-  hits.filter(h => h.score === best).forEach(h => featureEls[h.i].classList.add("hit"));
-  featureEls[hits[0].i].scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-  clearTimeout(hitTimer);
-  hitTimer = setTimeout(() => featureEls.forEach(el => el.classList.remove("hit")), 4000);
-  return true;
-}
-$("searchForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const q = $("q").value.trim(), msg = $("searchMsg");
-  if (!q) { msg.textContent = "Type what you need, for example billing or beds."; return; }
-  msg.textContent = showFeatures(q) ? "" : `We couldn't find "${q}". Ask us on WhatsApp, we may already do it.`;
-});
-document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => { $("q").value = c.dataset.q; $("searchMsg").textContent = ""; showFeatures(c.dataset.q); }));
-document.querySelectorAll("[data-find]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); showFeatures(a.dataset.find); }));
-
-// Carousel
-const track = $("track"), prev = $("prevBtn"), next = $("nextBtn");
-const step = () => { const c = track.querySelector(".card"); return c ? c.getBoundingClientRect().width + 20 : 300; };
-prev.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
-next.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
-function arrows() { prev.disabled = track.scrollLeft < 8; next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8; }
-track.addEventListener("scroll", arrows, { passive: true }); addEventListener("resize", arrows); arrows();
-
-// Screens with an enlarge view
-$("screenCards").innerHTML = SCREENS.map((s, i) => `<article class="shot"><button type="button" data-shot="${i}" aria-label="Enlarge: ${esc(s.title)}"><img src="${esc(s.img)}" alt="${esc(s.title)}" loading="lazy"></button><span class="cat">${esc(s.cat)}</span><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></article>`).join("");
-const viewer = $("viewer");
-$("screenCards").addEventListener("click", e => {
-  const b = e.target.closest("[data-shot]"); if (!b) return;
-  const s = SCREENS[b.dataset.shot];
-  $("viewerTitle").textContent = s.title; $("viewerImg").src = s.img; $("viewerImg").alt = s.title;
-  if (viewer.showModal) viewer.showModal(); else viewer.setAttribute("open", "");
-});
-$("viewerClose").addEventListener("click", () => viewer.close ? viewer.close() : viewer.removeAttribute("open"));
-viewer.addEventListener("click", e => { if (e.target === viewer) viewer.close(); });
-
-// Numbers and price
-$("stats").innerHTML = CONFIG.numbers.map(n => `<div class="stat"><b>${esc(n.value)}</b><span>${esc(n.label)}</span></div>`).join("");
-$("price").firstChild.textContent = CONFIG.price + " ";
-
-// Demo and tour links
-const demo = $("demoLink");
-if (CONFIG.demoUrl) demo.href = CONFIG.demoUrl;
-else { demo.hidden = true; $("demoPending").hidden = false; }
-if (/^(https:\/\/|\/|[a-z])/.test(CONFIG.tourUrl)) { $("tourLink").href = CONFIG.tourUrl; $("tourTile").href = CONFIG.tourUrl; }
-else { $("tourLink").hidden = true; $("tourTile").removeAttribute("target"); }
-
-// Team
-$("teamList").innerHTML = CONFIG.team.map(m => `
-  <article class="member">
-    <div class="photo">${m.photo && /^(https:\/\/|img\/)/.test(m.photo) ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy">` : `<svg class="icon" role="img" aria-label="Photo to be added"><use href="#i-person"/></svg>`}</div>
-    <div class="member-body"><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div>${m.qual ? `<div class="qual">${esc(m.qual)}</div>` : ""}<p>${esc(m.about)}</p></div>
-  </article>`).join("");
-
-// Reviews: only real ones
-$("reviews").innerHTML = CONFIG.reviews.length
-  ? CONFIG.reviews.map(r => `<blockquote class="quote" style="margin:0"><div class="qmark">“</div><div style="color:var(--amber)">${"★".repeat(r.stars || 5)}</div><p>${esc(r.text)}</p><footer><b style="color:var(--ink)">${esc(r.name)}</b>, ${esc(r.place)}</footer></blockquote>`).join('<hr style="border:none;border-top:1px solid var(--line);margin:0">')
-  : `<div class="empty"><b>Be the first doctor to share feedback</b><span>We are collecting feedback from our first hospitals and doctors. Yours could be the first one here.</span></div>`;
-
-// Contact details
-const contacts = [];
-if (CONFIG.whatsapp) contacts.push({ icon: "i-chat", label: "WhatsApp", value: "+" + CONFIG.whatsapp, link: waLink("Hello, I would like a demo of your hospital software.") });
-if (CONFIG.phone) contacts.push({ icon: "i-phone", label: "Phone", value: CONFIG.phone, copy: true });
-if (CONFIG.email) contacts.push({ icon: "i-mail", label: "Email", value: CONFIG.email, copy: true });
-contacts.push({ icon: "i-pin", label: "Location", value: CONFIG.city });
-if (!CONFIG.whatsapp && !CONFIG.phone) contacts.unshift({ icon: "i-phone", label: "Phone & WhatsApp", value: "Being added. Use the form to leave your number and we'll call you." });
-$("contactList").innerHTML = contacts.map(c => `
-  <div class="citem"><span class="cicon"><svg class="icon"><use href="#${c.icon}"/></svg></span><div><b>${esc(c.label)}</b>
-  ${c.link ? `<a href="${esc(c.link)}" target="_blank" rel="noopener">${esc(c.value)}</a>` : `<span>${esc(c.value)}</span>`}
-  ${c.copy ? `<button type="button" class="copy" data-copy="${esc(c.value)}">Copy</button>` : ""}</div></div>`).join("");
-document.addEventListener("click", async e => {
-  const btn = e.target.closest("[data-copy]"); if (!btn) return;
-  try { await navigator.clipboard.writeText(btn.dataset.copy); btn.textContent = "Copied"; }
-  catch { const r = document.createRange(); r.selectNodeContents(btn.previousElementSibling); getSelection().removeAllRanges(); getSelection().addRange(r); btn.textContent = "Selected"; }
-  setTimeout(() => (btn.textContent = "Copy"), 1500);
-});
-
-// Company details: only real ones
-const co = CONFIG.company;
-const rows = [["Name", co.legalName], ["Type", co.type], ["CIN", co.cin], ["Udyam", co.udyam], ["GSTIN", co.gstin], ["Address", co.address]].filter(r => r[1]);
-$("companyDetails").innerHTML = rows.length
-  ? rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")
-  : `<dt>Status</dt><dd>Company registration in progress</dd><dt>Based in</dt><dd>${esc(CONFIG.city)}</dd>`;
-
-// Star rating
-let rating = 5;
-const starsBox = $("stars");
-function drawStars() {
-  starsBox.innerHTML = [1, 2, 3, 4, 5].map(n => `<button type="button" role="radio" aria-checked="${n === rating}" aria-label="${n} star${n > 1 ? "s" : ""}" class="${n <= rating ? "on" : ""}" data-star="${n}">★</button>`).join("");
-}
-starsBox.addEventListener("click", e => { const b = e.target.closest("[data-star]"); if (b) { rating = Number(b.dataset.star); drawStars(); } });
-drawStars();
-
-// Forms open WhatsApp with the message written out
-function sendWhatsApp(text, errorEl) {
-  const link = waLink(text);
-  if (!link) { errorEl.classList.toggle("ok", false); errorEl.textContent = "Our WhatsApp number is being added. Please try again soon."; return; }
-  // A real link always works, even where the page may not open windows by itself
-  errorEl.classList.add("ok");
-  errorEl.innerHTML = 'Your message is ready. <a class="btn btn-sky" target="_blank" rel="noopener" href="' + esc(link) + '">Open WhatsApp to send</a>';
-  try { window.open(link, "_blank"); } catch (e) { /* the button above still works */ }
-}
-$("linkForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const phone = $("lPhone").value.replace(/\D/g, ""), err = $("lError");
-  if (phone.length !== 10) { err.classList.toggle("ok", false); err.textContent = "Please enter a 10-digit mobile number."; return; }
-  sendWhatsApp(`Please send me the ${CONFIG.brand} demo link.\nMy mobile: ${$("lCode").value} ${phone}`, err);
-});
-$("feedbackForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const name = $("fbName").value.trim(), text = $("fbText").value.trim(), err = $("fbError");
-  if (!name || !text) { err.classList.toggle("ok", false); err.textContent = "Please add your name and your feedback."; return; }
-  sendWhatsApp(`Feedback for ${CONFIG.brand}\nName: ${name}\nHospital/clinic: ${$("fbPlace").value.trim() || "-"}\nRating: ${"★".repeat(rating)} (${rating}/5)\n\n${text}`, err);
-});
-$("contactForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const name = $("cName").value.trim(), phone = $("cPhone").value.replace(/\D/g, ""), err = $("cError");
-  if (!name || phone.length < 10) { err.classList.toggle("ok", false); err.textContent = "Please add your name and a 10-digit mobile number."; return; }
-  sendWhatsApp(`Demo request for ${CONFIG.brand}\nName: ${name}\nMobile: ${phone}\nHospital/clinic: ${$("cPlace").value.trim() || "-"} (${$("cType").value})\n${$("cMsg").value.trim()}`, err);
-});
-</script>
+<script src="/assets/site.js"></script>
 </body>
 </html>
