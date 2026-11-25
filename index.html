@@ -258,8 +258,8 @@
   @media (max-width: 460px) { .plan ul { grid-template-columns: 1fr; } }
 
   /* Team */
-  .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .member { display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); overflow: hidden; transition: box-shadow .2s, transform .2s; }
+  .team { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .member { flex: 0 1 calc((100% - 80px) / 5); min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); overflow: hidden; transition: box-shadow .2s, transform .2s; }
   .member:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
   .photo { aspect-ratio: 3 / 4; max-width: 100%; background: linear-gradient(180deg, #f4f7fc, #e8eef8); display: grid; place-items: center; color: #8b93a7; overflow: hidden; }
   .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
@@ -269,8 +269,9 @@
   .member .role { color: var(--sky); font-weight: 800; font-size: 14px; }
   .member .qual { color: var(--ink); font-size: 13.5px; font-weight: 600; }
   .member p { color: var(--muted); font-size: 14px; margin-top: 4px; }
-  @media (max-width: 1000px) { .team { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 460px) { .team { grid-template-columns: 1fr; } }
+  @media (max-width: 1000px) { .member { flex-basis: calc((100% - 40px) / 3); } }
+  @media (max-width: 700px) { .member { flex-basis: calc((100% - 20px) / 2); } }
+  @media (max-width: 420px) { .member { flex-basis: 100%; } }
 
   /* Testimonials + forms */
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
@@ -770,6 +771,7 @@ const CONFIG = {
   ],
   team: [                              // photo: a file published with the page ("img/...") or a web address ("https://...")
     { name: "Sushant Tiwari", role: "Founder & Owner", qual: "", about: "Builds the software and works with every hospital we set up.", photo: "img/team-sushant.webp" },
+    { name: "P.C. Tiwari", role: "Co-founder", qual: "", about: "Guides the company's direction and its work with hospitals.", photo: "img/team-pc.webp" },
     { name: "Shivam Tripathi", role: "Finance Director", qual: "", about: "Looks after the company's finances, plans and billing.", photo: "img/team-shivam.webp" },
     { name: "Dr. Punit Tiwari", role: "Medical Advisor", qual: "MBBS \u00b7 Orthopaedic resident", about: "Brings a doctor's view of the OPD and the wards to the software.", photo: "img/team-punit.webp" },
     { name: "Aradhana Tiwari", role: "Research & Quality Lead", qual: "B.Sc, M.Sc (Chemistry) \u00b7 PhD ongoing", about: "Checks every feature carefully before it reaches a hospital.", photo: "img/team-aradhana.webp" }
