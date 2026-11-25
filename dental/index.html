@@ -98,6 +98,20 @@
     </div>
   </section>
 
+  <section class="section" id="screens" aria-labelledby="screens-title">
+    <div class="wrap">
+      <div class="head">
+        <div><h2 id="screens-title">See the real dental screens</h2><p>Taken from the dental demo. Every patient name and amount is made up. Tap a picture to enlarge it.</p></div>
+        <a class="btn btn-line" href="/dental/demo/">Try it yourself</a>
+      </div>
+      <div class="screens" id="screenCards"></div>
+    </div>
+  </section>
+  <dialog class="viewer" id="viewer" aria-labelledby="viewerTitle">
+    <div class="viewer-bar"><span id="viewerTitle"></span><button type="button" id="viewerClose">Close</button></div>
+    <img id="viewerImg" alt="">
+  </dialog>
+
   <section class="section tinted" aria-labelledby="dental-features">
     <div class="wrap">
       <div class="head"><div><h2 id="dental-features">What the dental edition does</h2><p>Built on the same tested system as our hospital software.</p></div></div>
@@ -129,6 +143,16 @@
   </div>
 </footer>
 
+<script>
+window.PAGE_SCREENS = [
+  { cat: "Today", title: "The day at a glance", text: "Appointments, visits, money collected and still to collect, and each chair's schedule.", img: "/img/d-today.webp" },
+  { cat: "Appointments", title: "A clear appointment book", text: "Day and week view for every dentist and chair, with check-in in one tap.", img: "/img/d-appointments.webp" },
+  { cat: "Tooth chart", title: "Tap a tooth, note its condition", text: "Decay, fillings, root canals, crowns and missing teeth, milk teeth included.", img: "/img/d-chart.webp" },
+  { cat: "Treatment plans", title: "Plans paid in instalments", text: "Each sitting ticked off, every payment listed, and the balance worked out.", img: "/img/d-plan.webp" },
+  { cat: "Price list", title: "Your own prices", text: "Per-tooth and per-visit prices that fill in when you plan a treatment.", img: "/img/d-prices.webp" },
+  { cat: "Owner's reports", title: "Know your collection", text: "Cash, UPI and card, consultations and treatments, for any day, week or month.", img: "/img/d-collection.webp" }
+];
+</script>
 <script src="/assets/site.js"></script>
 </body>
 </html>

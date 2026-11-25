@@ -38,7 +38,8 @@ const CONFIG = {
   ]
 };
 
-const SCREENS = [
+// A page can show its own screens (the dental page does) by setting window.PAGE_SCREENS first
+const SCREENS = window.PAGE_SCREENS || [
   { cat: "Reception", title: "Register a patient in about a minute", text: "Pick the doctor and the fee fills itself in. Returning patients are found by mobile number.", img: "/img/03-opd-new.webp" },
   { cat: "Prescription slip", title: "A clean slip, printed or on WhatsApp", text: "Your logo, the doctor's details and OPD hours, with a private QR code.", img: "/img/04-opd-slip.webp" },
   { cat: "Billing", title: "Bill tests with one click", text: "Quick buttons for common tests, your own price list, and cash, UPI or card.", img: "/img/06-billing.webp" },
