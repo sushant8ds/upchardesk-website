@@ -23,6 +23,7 @@ jobs:
     env:
       DEMOS: >-
         https://hospital-demo-spl5.onrender.com/login
+        https://dental-demo-pmzm.onrender.com/login
     steps:
       - name: Visit each demo
         run: |
