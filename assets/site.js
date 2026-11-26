@@ -13,11 +13,11 @@ const CONFIG = {
   tourUrl: "/tour/",
   price: "₹1,200",
   company: {                           // from your registration certificate
-    legalName: "Spandana Weg",                   // e.g. "XYZ Healthtech Private Limited"
-    type: "Partnership Firm",                        // e.g. "Private Limited Company" or "Proprietorship (Udyam registered)"
+    legalName: "",                     // e.g. "XYZ Healthtech Private Limited"
+    type: "",                          // e.g. "Private Limited Company" or "Proprietorship (Udyam registered)"
     cin: "",                           // Corporate Identification Number (Pvt Ltd only)
     udyam: "",                         // Udyam registration number
-    gstin: "09ADUFS6067N1ZW",
+    gstin: "",
     address: ""                        // registered office address
   },
   numbers: [                           // only numbers you can prove
@@ -194,7 +194,7 @@ document.addEventListener("click", async e => {
 // Company details: only real ones
 if ($("companyDetails")) {
 const co = CONFIG.company;
-const rows = [["Name", co.legalName], ["Type", co.type], ["CIN", co.cin], ["Udyam", co.udyam], ["GSTIN", co.gstin], ["Address", co.address || (co.legalName ? CONFIG.city : "")]].filter(r => r[1]);
+const rows = [["Name", co.legalName], ["Type", co.type], ["CIN", co.cin], ["Udyam", co.udyam], ["GSTIN", co.gstin], ["Address", co.address]].filter(r => r[1]);
 $("companyDetails").innerHTML = rows.length
   ? rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")
   : `<dt>Status</dt><dd>Company registration in progress</dd><dt>Based in</dt><dd>${esc(CONFIG.city)}</dd>`;
