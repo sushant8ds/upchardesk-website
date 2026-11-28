@@ -14,10 +14,10 @@ const CONFIG = {
   tourUrl: "/tour/",
   price: "₹1,200",
   company: {                           // from your registration certificate
-    legalName: "",                     // e.g. "XYZ Healthtech Private Limited"
-    type: "",                          // e.g. "Private Limited Company" or "Proprietorship (Udyam registered)"
+    legalName: "Tenvura",              // e.g. "XYZ Healthtech Private Limited"
+    type: "Proprietorship (Udyam registered)",
     cin: "",                           // Corporate Identification Number (Pvt Ltd only)
-    udyam: "",                         // Udyam registration number
+    udyam: "UDYAM-UP-47-0066203",      // Udyam registration number
     gstin: "",
     address: ""                        // registered office address
   },
