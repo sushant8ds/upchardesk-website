@@ -4,7 +4,8 @@
    shows "registration in progress" or hides it, and never invents details.
    ====================================================================== */
 const CONFIG = {
-  brand: "Upchar SoftDesk",            // the company / product name
+  brand: "Tenvura",            // the company / product name
+  logoParts: ["Ten", "vura"],          // header logo: first part dark, second part blue
   whatsapp: "919362414164",            // WhatsApp number with country code, digits only, e.g. "919XXXXXXXXX"
   phone: "",                           // e.g. "+91 9XXXX XXXXX"
   email: "",                           // e.g. "hello@yourdomain.in"
@@ -69,8 +70,8 @@ const $ = id => document.getElementById(id);
 
 // Brand name everywhere; the header logo shows the second half in blue
 for (const el of document.querySelectorAll("[data-brand]")) el.textContent = CONFIG.brand;
-// Logo: first word in dark, the rest in blue ("Upchar SoftDesk"); one-word names split at the last capital
-const split = CONFIG.brand.includes(" ") ? CONFIG.brand.match(/^(\S+ )(.+)$/) : CONFIG.brand.match(/^(.+?)([A-Z][a-z]+)$/);
+// Logo: CONFIG.logoParts (dark, blue); otherwise the first word dark and the rest blue, or one-word names split at the last capital
+const split = CONFIG.logoParts ? [null, ...CONFIG.logoParts] : CONFIG.brand.includes(" ") ? CONFIG.brand.match(/^(\S+ )(.+)$/) : CONFIG.brand.match(/^(.+?)([A-Z][a-z]+)$/);
 document.querySelector("[data-brand-split]").innerHTML = split ? `${esc(split[1])}<b>${esc(split[2])}</b>` : esc(CONFIG.brand);
 if ($("year")) $("year").textContent = new Date().getFullYear();
 
